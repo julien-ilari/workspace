@@ -1,8 +1,8 @@
 package fr.app.cdi;
 
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
 public class HelloWorld {
 
   private String firstName = "John";

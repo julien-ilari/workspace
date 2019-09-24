@@ -85,12 +85,6 @@
 			<artifactId>cdi-api</artifactId>
 			<version>1.2</version>
 			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.el</groupId>
-					<artifactId>javax.el-api</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -110,6 +104,7 @@
 				<version>9.2.5.v20141112</version>
 				<configuration>
 					<webApp>
+					
 <!-- 						<overrideDescriptor>src/main/webapp/WEB-INF/web-overwrite.xml</overrideDescriptor> -->
 					</webApp>
 					<contextXml>src/main/webapp/WEB-INF/jetty-context.xml</contextXml>

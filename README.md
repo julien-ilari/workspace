@@ -6,5 +6,5 @@ Version de l'application 0.0.1-SNAPSHOT
    <li> Partie Métier : partie non implémentée
    <li> Partie Accès aux données : partie non implémentée
    
-   <h2>Lancement de l'application</h2>
+ <h2>Lancement de l'application</h2>
    mvn clean install jetty:run

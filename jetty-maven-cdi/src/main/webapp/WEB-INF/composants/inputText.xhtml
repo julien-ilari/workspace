@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<c:if test="#{empty id}">
+		<c:set var="id" value="#{fn:replace(label, ' ', '-')}" />
+		<c:set var="id" value="#{fn:replace(id, '\\.', '')}" />
+		<c:set var="id" value="#{fn:toLowerCase(id)}" />
+	</c:if>
+	
+
+	<div class="form-group col-md-12">
+		<!-- label -->
+		<span class="ui-g" style="padding:0"> 
+			<span> 
+				<i class="#{faClass}" jsf:rendered="#{not empty faClass}" />
+				<p:outputLabel id="label-#{id}" for="#{id}" value="#{label}" lang="fr" />
+			</span>
+		</span>
+		
+
+		<!-- input -->
+		<c:if test="#{upperCase eq 'yes'}">
+			<p:inputText id="#{id}" class="form-control"
+			placeholder="(vide)"
+				disabled="#{controller.mode eq 2 and not enableModelUpdate}"
+				label="#{label}" value="#{value}"
+				style="text-transform:uppercase;
+							 width: -moz-available; 
+							 width: -webkit-fill-available;
+							 width: fill-available;">
+				<f:converter converterId="toUpperCaseConverter" />
+			</p:inputText>
+		</c:if>
+		<c:if test="#{empty upperCase or upperCase eq 'no'}">
+			<h:inputText id="#{id}" class="form-control" 
+			value="#{value}" placeholder="(vide)"
+				style="width: -moz-available; 
+						width: -webkit-fill-available;
+						width: fill-available;"
+				disabled="#{controller.mode eq 2 and not enableModelUpdate}"
+				label="#{label}" >
+			</h:inputText>
+			 
+		</c:if>
+		<div id="message-#{id}" class="invalid-feedback"><h:message for="#{id}" /></div>
+	</div>
+</ui:composition>

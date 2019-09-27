@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+	version="2.0">
+	<namespace>http://www.app.fr/html</namespace>
+	
+	<tag>
+		<tag-name>inputText</tag-name>
+		<source>composants/inputText.xhtml</source>
+		<attribute>
+			<description>Valeur de l'input text</description>
+			<name>value</name>
+			<required>true</required>
+			<method-signature></method-signature>
+		</attribute>
+		<attribute>
+			<description>label de l'input text</description>
+			<name>label</name>
+		</attribute>
+		<attribute>
+			<description>Mettre à yes pour activer upperCase sur l'élément</description>
+			<name>upperCase</name>
+		</attribute>
+		<attribute>
+			<description>Class à applique au composant html label de l'input</description>
+			<name>styleClassLabel</name>
+		</attribute>
+		<attribute>
+			<description>Class à applique au composant html input</description>
+			<name>styleClassInput</name>
+		</attribute>
+		<attribute>
+			<description>Class à applique au composant html message de l'input</description>
+			<name>styleClassMessage</name>
+		</attribute>
+		<attribute>
+			<description>La velur doit être unique, true pour oui et false pour non. par défaut false.</description>
+			<name>uniqueText</name>
+		</attribute>
+		<attribute>
+			<description>lier le composant au back-end bean</description>
+			<name>bindingInput</name>
+		</attribute>
+	</tag>
+
+</facelet-taglib>

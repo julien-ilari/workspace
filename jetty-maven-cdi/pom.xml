@@ -12,10 +12,10 @@
 	<name>jetty-maven-cdi</name>
 
 	<properties>
-	
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 
@@ -26,40 +26,45 @@
 
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<jetty-maven-plugin.version>9.4.8.v20171121</jetty-maven-plugin.version>
+		
+		<!-- dependency commons -->
+		<commons-lang3-version>3.8.1</commons-lang3-version>
+		<commons-beanutils-version>1.9.3</commons-beanutils-version>
+		<commons-codec-version>1.11</commons-codec-version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-			
+
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-	
-	
-<!-- Jetty -->
 
 
-<!--  Servlet API -->
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>${version.javax-servlet}</version>
-</dependency>
+		<!-- Jetty -->
 
 
-					<dependency>
-						<groupId>org.jboss.weld.servlet</groupId>
-						<artifactId>weld-servlet</artifactId>
-						<version>2.3.5.Final</version>
-						<scope>compile</scope>
-					</dependency>
+		<!-- Servlet API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${version.javax-servlet}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.3.5.Final</version>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
@@ -73,18 +78,38 @@
 			<version>${jsf.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		  <dependency>
-		      <groupId>org.primefaces</groupId>
-		      <artifactId>primefaces</artifactId>
-		      <version>${primefaces.version}</version>
-		    </dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 			<version>1.2</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- classes utilitaires Java -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3-version}</version>
+		</dependency>
+		<!-- fournit un wrapper facile à utiliser mais flexible autour de la réflexion 
+			et de l'introspection. -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils-version}</version>
+		</dependency>
+		<!-- encodeur simple et des décodeurs pour divers formats -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec-version}</version>
 		</dependency>
 	</dependencies>
 
@@ -104,8 +129,8 @@
 				<version>9.2.5.v20141112</version>
 				<configuration>
 					<webApp>
-					
-<!-- 						<overrideDescriptor>src/main/webapp/WEB-INF/web-overwrite.xml</overrideDescriptor> -->
+
+						<!-- <overrideDescriptor>src/main/webapp/WEB-INF/web-overwrite.xml</overrideDescriptor> -->
 					</webApp>
 					<contextXml>src/main/webapp/WEB-INF/jetty-context.xml</contextXml>
 				</configuration>

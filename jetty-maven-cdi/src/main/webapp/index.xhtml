@@ -5,11 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
-	template="/WEB-INF/templates/layout.xhtml">
+	xmlns:html="http://www.app.fr/html"
+	template="/WEB-INF/templates/layout-admin.xhtml">
 	<ui:define name="titre">Test</ui:define>
 	
 	
 	<ui:define name="content">
-		test
+		<html:inputText value="test" label="test"></html:inputText>
 	</ui:define>
 </ui:composition>

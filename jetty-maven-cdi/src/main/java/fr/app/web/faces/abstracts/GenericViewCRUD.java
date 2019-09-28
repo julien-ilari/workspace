@@ -21,7 +21,7 @@ import fr.app.web.faces.utils.JSFUtil;
 
 
 
-public abstract class GenericViewCRUD extends AbstractBean {
+public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends AbstractBean {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,18 +29,18 @@ public abstract class GenericViewCRUD extends AbstractBean {
 	/**
 	 * models : liste de plusieurs entité.
 	 */
-	private List<Object> listModels;
+	private List<M> listModels;
 
 	/**
 	 * model : Représente une seul entité.
 	 */
 	@Inject
-	private Object model;
+	private M model;
 
 	/**
 	 * Liste des IEntity filtrés.
 	 */
-	private List<Object> filteredValues;
+	private List<M> filteredValues;
 
 	/**
 	 * IEntity selectionné.
@@ -205,12 +205,12 @@ public abstract class GenericViewCRUD extends AbstractBean {
 	}
 	
 	
-	public List<Object> getListModels() {
+	public List<M> getListModels() {
 		return listModels;
 	}
 
 
-	public void setListModels(List<Object> listModels) {
+	public void setListModels(List<M> listModels) {
 		this.listModels = listModels;
 	}
 
@@ -220,17 +220,17 @@ public abstract class GenericViewCRUD extends AbstractBean {
 	}
 
 
-	public void setModel(Object model) {
+	public void setModel(M model) {
 		this.model = model;
 	}
 
 
-	public List<Object> getFilteredValues() {
+	public List<M> getFilteredValues() {
 		return filteredValues;
 	}
 
 
-	public void setFilteredValues(List<Object> filteredValues) {
+	public void setFilteredValues(List<M> filteredValues) {
 		this.filteredValues = filteredValues;
 	}
 

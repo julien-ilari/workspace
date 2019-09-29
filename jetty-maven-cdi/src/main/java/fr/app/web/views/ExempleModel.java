@@ -1,6 +1,7 @@
 package fr.app.web.views;
 
 import fr.app.web.faces.abstracts.AbstractModel;
+import fr.app.web.faces.validators.UpperCase;
 
 
 public class ExempleModel extends AbstractModel<String> {
@@ -10,7 +11,9 @@ public class ExempleModel extends AbstractModel<String> {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@UpperCase
 	private String id;
+	
 	
 	
 	@Override

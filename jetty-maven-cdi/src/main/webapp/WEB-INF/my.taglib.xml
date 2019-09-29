@@ -49,5 +49,16 @@
 		<tag-name>buttonAdd</tag-name>
 		<source>composants/button/insert/buttonValidateAdd.xhtml</source>
 	</tag>
+	
+	
+	
+	<tag>
+		<tag-name>dataTable</tag-name>
+		<source>composants/data/dataTable.xhtml</source>
+	</tag>
+	
+	
+	
+	
 
 </facelet-taglib>

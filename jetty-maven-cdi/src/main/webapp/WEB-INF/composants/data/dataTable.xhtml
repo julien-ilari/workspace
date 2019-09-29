@@ -9,7 +9,29 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:composite="http://java.sun.com/jsf/composite">
 
+	<h:dataTable value="#{controller.listModels}"  id="dtBasicExample"
+			title="tableau des valeurs" var="m"
+			styleClass="display table table-striped table-hover table-bordered table-borderless table-sm"
+			headerClass="thead-dark">
 
 
 
+			<f:facet name="header">
+				<h:outputText value="Liste de valeurs" />
+			</f:facet>
+			<h:column rowHeader="true">
+				<f:facet name="header">
+					<div class="sortable both">#Clé</div>
+				</f:facet>    				
+						      #{m.id}
+						   </h:column>
+
+
+			<h:column>
+				<f:facet name="header">valeur</f:facet>    				
+						      #{m.id}
+						   </h:column>
+
+
+		</h:dataTable>
 </ui:composition>

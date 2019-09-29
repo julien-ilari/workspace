@@ -1,7 +1,7 @@
 /**
  *
  */
-package fr.app.commons.exceptions;
+package fr.app.commons.base.exceptions;
 
 import java.io.Serializable;
 

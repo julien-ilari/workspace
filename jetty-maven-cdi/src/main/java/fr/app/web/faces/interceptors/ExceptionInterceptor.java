@@ -19,7 +19,7 @@ import javax.interceptor.InvocationContext;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fr.app.commons.exceptions.TechniqueException;
+import fr.app.commons.base.exceptions.TechniqueException;
 import fr.app.web.faces.exceptions.MetierException;
 import fr.app.web.faces.utils.JSFUtil;
 

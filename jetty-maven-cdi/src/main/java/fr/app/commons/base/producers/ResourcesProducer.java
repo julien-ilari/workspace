@@ -1,4 +1,4 @@
-package fr.app.commons.producers;
+package fr.app.commons.base.producers;
 
 import java.util.Locale;
 import java.util.PropertyResourceBundle;

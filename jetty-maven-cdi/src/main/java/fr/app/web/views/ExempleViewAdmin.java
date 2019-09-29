@@ -1,4 +1,4 @@
-package fr.app.web.faces.views;
+package fr.app.web.views;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;

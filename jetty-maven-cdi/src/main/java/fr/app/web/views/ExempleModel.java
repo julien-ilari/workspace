@@ -1,4 +1,4 @@
-package fr.app.web.faces.views;
+package fr.app.web.views;
 
 import fr.app.web.faces.abstracts.AbstractModel;
 

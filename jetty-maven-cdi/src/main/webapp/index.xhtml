@@ -19,7 +19,9 @@
 	
 	<ui:define name="content">
 		<h:form prependId="false" >
-		<html:inputText value="#{model.id}" label="Identifiant" required="true" />
+		<html:inputText id="a" value="#{model.id}" label="Identifiant" required="true" upperCase="yes" />
+		<html:inputText id="b" value="#{model.id}" label="Identifiant 2" required="true" />
+		<html:inputText id="c" value="#{model.id}" label="Identifiant 3" required="true" />
 		<html:buttonAdd />
 		
 		<html:dataTable>

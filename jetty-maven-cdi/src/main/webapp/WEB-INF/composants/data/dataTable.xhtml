@@ -9,9 +9,9 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:composite="http://java.sun.com/jsf/composite">
 
-	<h:dataTable value="#{controller.listModels}"  id="dtBasicExample"
+	<h:dataTable value="#{controller.listModels}"  id="dataTable"
 			title="tableau des valeurs" var="m"
-			styleClass="display table table-striped table-hover table-bordered table-borderless table-sm"
+			styleClass="display table table-striped table-hover table-bordered table-borderless table-sm "
 			headerClass="thead-dark">
 
 
@@ -34,4 +34,8 @@
 
 
 		</h:dataTable>
+		<ul class="pager">
+  <li><a href="#">Précédent</a></li>
+  <li><a href="#">Suivant</a></li>
+</ul>
 </ui:composition>

@@ -16,19 +16,19 @@
 	</c:if>
 	
 
-	<div class="form-group col-md-12">
+	<div class="form-group">
 		<!-- label -->
-		<span class="ui-g" style="padding:0"> 
+		
 			<span> 
 				<i class="#{faClass}" jsf:rendered="#{not empty faClass}" />
-				<p:outputLabel id="label-#{id}" for="#{id}" value="#{label}" lang="fr" />
+				<p:outputLabel id="label-#{id}" for="input-#{id}" value="#{label}" lang="fr" />
 			</span>
-		</span>
+		
 		
 
 		<!-- input -->
 		<c:if test="#{upperCase eq 'yes'}">
-			<p:inputText id="#{id}" class="form-control"
+			<p:inputText id="input-#{id}" class="form-control" required="true"
 			placeholder="(vide)"
 				disabled="#{controller.mode eq 2 and not enableModelUpdate}"
 				label="#{label}" value="#{value}"
@@ -40,7 +40,7 @@
 			</p:inputText>
 		</c:if>
 		<c:if test="#{empty upperCase or upperCase eq 'no'}">
-			<h:inputText id="#{id}" class="form-control" 
+			<h:inputText id="input-#{id}" class="form-control" required="#{required}" 
 			value="#{value}" placeholder="(vide)"
 				style="width: -moz-available; 
 						width: -webkit-fill-available;
@@ -50,6 +50,6 @@
 			</h:inputText>
 			 
 		</c:if>
-		<div id="message-#{id}" class="invalid-feedback"><h:message for="#{id}" /></div>
+		<div id="message-#{id}" class="invalid-feedback"><h:message for="input-#{id}" /></div>
 	</div>
 </ui:composition>

@@ -2,8 +2,6 @@ package fr.app.web.faces.abstracts;
 
 import java.io.Serializable;
 
-import fr.app.web.faces.utils.JSFUtil;
-
 public abstract class AbstractBean implements Serializable {
 
 	/**
@@ -14,5 +12,7 @@ public abstract class AbstractBean implements Serializable {
 	/**
 	 * Dépôt de resource.
 	 */
-	protected final String ERREUR_TECHNIQUE = JSFUtil.bundleString("erreur.technique");
+//	protected final String ERREUR_TECHNIQUE = JSFUtil.bundleString("erreur.technique");
+	
+	protected final String ERREUR_TECHNIQUE = "erreur.technique";
 }

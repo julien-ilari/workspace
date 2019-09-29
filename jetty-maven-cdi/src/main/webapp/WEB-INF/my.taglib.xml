@@ -43,5 +43,11 @@
 			<name>bindingInput</name>
 		</attribute>
 	</tag>
+	
+	
+	<tag>
+		<tag-name>buttonAdd</tag-name>
+		<source>composants/button/insert/buttonValidateAdd.xhtml</source>
+	</tag>
 
 </facelet-taglib>

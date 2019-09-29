@@ -9,8 +9,18 @@
 	template="/WEB-INF/templates/layout-admin.xhtml">
 	<ui:define name="titre">Test</ui:define>
 	
+	<f:metadata>
+	  <f:event type="preRenderView" listener="#{exempleViewAdmin.loadBean}"/>
+	</f:metadata>
+	
+	<!-- paramètres-->
+	<ui:param name="controller" value="#{exempleViewAdmin}" />
+	<ui:param name="model" value="#{controller.model}" />
 	
 	<ui:define name="content">
-		<html:inputText value="test" label="test"></html:inputText>
+		<h:form prependId="false" >
+		<html:inputText value="#{model.id}" label="Identifiant" required="true" />
+		<html:buttonAdd />
+		</h:form>
 	</ui:define>
 </ui:composition>

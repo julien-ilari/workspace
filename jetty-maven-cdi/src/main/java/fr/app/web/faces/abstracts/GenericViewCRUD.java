@@ -174,8 +174,6 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 		if(!JSFUtil.facesContext().isPostback())
 			return;
 		
-		
-		
 		//loadBean();
 		PrimeFaces.current().executeScript("insertSuccess()");
 	}

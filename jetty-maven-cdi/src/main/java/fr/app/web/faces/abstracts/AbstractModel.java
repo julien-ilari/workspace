@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 
-public abstract class AbstractModel<ID extends Serializable> extends AbstractBean implements Comparable<AbstractBean> {
+public abstract class AbstractModel<ID extends Serializable> extends AbstractBean  {
 
 	/**
 	 * serialVersionUID
@@ -23,14 +23,5 @@ public abstract class AbstractModel<ID extends Serializable> extends AbstractBea
 		return String.valueOf(getId());
 	}
 		
-
 	
-	@Override
-	public String toString() {
-		if(null != getId())
-			return getId().toString();
-		else
-			return super.toString();
-	}
-
 }

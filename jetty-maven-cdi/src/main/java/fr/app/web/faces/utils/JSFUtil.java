@@ -208,8 +208,8 @@ public class JSFUtil {
     public static String bundleString(final String key) {
 
         try {
-            return getResourceBundle().getString(key);
-
+//            return getResourceBundle().getString(key);
+return key;
         } catch (MissingResourceException e) {
             return key;
         }

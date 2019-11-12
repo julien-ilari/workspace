@@ -6,7 +6,8 @@
     version="2.3">
      
     <lifecycle>
-        <phase-listener>fr.app.web.faces.listeners.InputListener</phase-listener>
+        <phase-listener>fr.app.web.faces.listeners.RestorViewListener</phase-listener>
+        <phase-listener>fr.app.web.faces.listeners.ProcessValidationListener</phase-listener>
     </lifecycle>
 
 	<application>

@@ -17,9 +17,8 @@
 	<ui:param name="model" value="#{controller.model}" />
 
 	<ui:define name="content">
-		<h:form prependId="false">
-			<html:inputText id="a" value="#{model.id}" label="Identifiant"
-				required="true" upperCase="no" />
+		<h:form id="form-edit" prependId="true">
+			<html:inputText value="#{model.id}" label="Identifiant" upperCase="yes" />
 			<html:buttonAdd />
 
 			<html:dataTable>
@@ -32,10 +31,10 @@
 			   </h:column>
 
 
-			<h:column>
-				<f:facet name="header">valeur</f:facet>    				
-					      #{m.id}
-			</h:column>
+				<h:column>
+					<f:facet name="header">valeur</f:facet>    				
+						      #{m.id}
+				</h:column>
 
 			</html:dataTable>
 

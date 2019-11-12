@@ -16,7 +16,7 @@ public class TrimConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
-        return (modelValue != null) ? modelValue.toString().trim() : "";
+        return (modelValue != null) ? modelValue.toString().trim() : null;
     }
 
 }

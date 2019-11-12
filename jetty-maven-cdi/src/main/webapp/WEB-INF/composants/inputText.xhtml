@@ -30,21 +30,20 @@
 			</div>
 
 			<!-- input -->
-			<c:if test="#{upperCase eq 'yes'}">	
-				<h:inputText  id="input-#{id}"  label="#{label}" 
-				style="text-transform:uppercase;"  a:placeholder="(vide)" required="true"
-				value="#{value}" type="text" styleClass="form-control">
-					<f:converter converterId="toUpperCaseConverter" />
-				</h:inputText>
+			<c:if test="#{(not empty upperCase) and (upperCase eq 'yes')}">
+				<input jsf:id="input-#{id}" jsf:value="#{value}" jsf:label="#{label}" style="text-transform:uppercase;"
+				aria-label="#{label}" aria-describedby="input-group-#{id}" 
+				type="text" jsf:styleClass="form-control" placeholder="(vide)" jsf:converter="#{converter.upperCase}" />
 			</c:if>
+			
 			<c:if test="#{empty upperCase or upperCase eq 'no'}">
-				<input jsf:id="input-#{id}" jsf:value="#{value}" aria-label="#{label}" aria-describedby="input-group-#{id}" 
-				type="text" class="form-control" placeholder="(vide)" />
+				<input jsf:id="input-#{id}" jsf:value="#{value}"  jsf:label="#{label}"
+				aria-label="#{label}" aria-describedby="input-group-#{id}" 
+				type="text" jsf:styleClass="form-control" placeholder="(vide)" />
 			</c:if>
 			<h:message id="message-#{id}" for="input-#{id}" styleClass="invalid-feedback" />
 			
 			
 		</div>
-<!-- 		<div id="message-#{id}" class="invalid-feedback"><h:messages for="input-#{id}" /></div> -->
 	</div>
 </ui:composition>

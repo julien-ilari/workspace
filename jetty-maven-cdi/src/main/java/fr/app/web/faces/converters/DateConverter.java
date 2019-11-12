@@ -1,6 +1,7 @@
 package fr.app.web.faces.converters;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.component.UIComponent;
@@ -10,7 +11,7 @@ import javax.faces.convert.DateTimeConverter;
 import javax.faces.convert.FacesConverter;
 
 
-@FacesConverter("converter.date")
+@FacesConverter(forClass=Calendar.class)
 public class DateConverter extends DateTimeConverter {
 
     private static final String FORMAT_DATE = "dd/MM/yyyy HH:mm:ss";

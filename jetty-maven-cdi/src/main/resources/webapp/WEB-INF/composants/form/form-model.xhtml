@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<f:view>
+		<h:form id="form-model" prependId="false" binding="#{controller.formModel}">
+			<!-- Remote commande insert -->
+			<p:remoteCommand id="remote-insertSuccess" immediate="true" name="insertSuccess"
+				onsuccess="PF('#{controller.dataTable.widgetVar}').filter();"
+				oncomplete="msgInsertSuccess();" />
+			<p:remoteCommand id="remote-msgInsertSuccess" resetValues="true" immediate="true"
+				name="msgInsertSuccess" action="#{controller.insertSuccess}" />
+			
+			<!-- Remote commande update -->
+			<p:remoteCommand id="remote-updateSuccess" immediate="true" name="updateSuccess"
+				onsuccess="PF('#{controller.dataTable.widgetVar}').filter();"
+				oncomplete="msgUpdateSuccess()" />
+			<p:remoteCommand id="remote-msgUpdateSuccess" resetValues="true" immediate="true"
+				name="msgUpdateSuccess" action="#{controller.updateSuccess}" />
+		
+		
+			<ui:insert></ui:insert>
+		</h:form>
+	</f:view>
+	
+</ui:composition>

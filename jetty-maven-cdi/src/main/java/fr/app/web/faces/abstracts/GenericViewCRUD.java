@@ -50,12 +50,12 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 	/**
 	 * Composant Formulaire pour l'ajout et la modification.
 	 */
-	private UIForm formAjout;
+	private UIForm formModel;
 
 	/**
 	 * Formulaire contenant pour la dataTable.
 	 */
-	private UIForm formList;
+	private UIForm formModels;
 
 	private HtmlInputText inputUniqueText;
 
@@ -134,7 +134,7 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 	public void updateSuccess() {
 		if (!JSFUtil.facesContext().isValidationFailed()) {
 			FacesMessage message = new FacesMessage("La valeur a bien été modifiée.");
-			FacesContext.getCurrentInstance().addMessage(formList.getClientId(), message);
+			FacesContext.getCurrentInstance().addMessage(formModels.getClientId(), message);
 		}
 	}
 	
@@ -160,7 +160,7 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 	public void deleteSuccess() {
 		if (!JSFUtil.facesContext().isValidationFailed()) {
 			FacesMessage message = new FacesMessage("La valeur a bien été supprimée.");
-			FacesContext.getCurrentInstance().addMessage(formList.getClientId(), message);
+			FacesContext.getCurrentInstance().addMessage(formModels.getClientId(), message);
 		}
 
 	}
@@ -187,7 +187,7 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 	public void insertSuccess() {
 		if (!JSFUtil.facesContext().isValidationFailed()) {
 			FacesMessage message = new FacesMessage("La valeur a bien été ajoutée.");
-			FacesContext.getCurrentInstance().addMessage(formList.getClientId(), message);
+			FacesContext.getCurrentInstance().addMessage(formModels.getClientId(), message);
 		}
 	}
 
@@ -243,24 +243,7 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 	}
 
 
-	public UIForm getFormAjout() {
-		return formAjout;
-	}
 
-
-	public void setFormAjout(UIForm formAjout) {
-		this.formAjout = formAjout;
-	}
-
-
-	public UIForm getFormList() {
-		return formList;
-	}
-
-
-	public void setFormList(UIForm formList) {
-		this.formList = formList;
-	}
 
 
 	public HtmlInputText getInputUniqueText() {
@@ -290,6 +273,26 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 
 	public void setMode(Integer mode) {
 		this.mode = mode;
+	}
+
+
+	public UIForm getFormModel() {
+		return formModel;
+	}
+
+
+	public void setFormModel(UIForm formModel) {
+		this.formModel = formModel;
+	}
+
+
+	public UIForm getFormModels() {
+		return formModels;
+	}
+
+
+	public void setFormModels(UIForm formModels) {
+		this.formModels = formModels;
 	}
 
 	

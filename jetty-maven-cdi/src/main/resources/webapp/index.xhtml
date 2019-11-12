@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:html="http://www.app.fr/html"
+	template="/WEB-INF/templates/layout-admin.xhtml">
+	<ui:define name="titre">Test</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{exempleViewAdmin.loadBean}" />
+	</f:metadata>
+
+	<!-- paramètres-->
+	<ui:param name="controller" value="#{exempleViewAdmin}" />
+	<ui:param name="model" value="#{controller.model}" />
+
+	<ui:define name="content">
+		<h:form prependId="false">
+			<html:inputText id="a" value="#{model.id}" label="Identifiant"
+				required="true" upperCase="no" />
+			<html:buttonAdd />
+
+			<html:dataTable>
+
+				<h:column rowHeader="true">
+					<f:facet name="header">
+						<div class="sortable both">#Clé</div>
+					</f:facet>    				
+			     	 #{m.id}
+			   </h:column>
+
+
+			<h:column>
+				<f:facet name="header">valeur</f:facet>    				
+					      #{m.id}
+			</h:column>
+
+			</html:dataTable>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

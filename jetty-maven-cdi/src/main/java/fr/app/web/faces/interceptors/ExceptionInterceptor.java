@@ -21,12 +21,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import fr.app.commons.base.exceptions.TechniqueException;
 import fr.app.web.faces.exceptions.MetierException;
+import fr.app.web.faces.interceptors.annotations.CatchException;
 import fr.app.web.faces.utils.JSFUtil;
 
 /**
  * The abstract Class AbstractExceptionInterceptor.
  */
-@WebCatchException
+@CatchException
 @Interceptor
 public class ExceptionInterceptor implements Serializable {
 

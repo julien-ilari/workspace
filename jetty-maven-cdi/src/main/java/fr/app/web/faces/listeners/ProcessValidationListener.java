@@ -45,10 +45,13 @@ public class ProcessValidationListener implements PhaseListener {
 			if (child instanceof HtmlInputText) {
 				HtmlInputText htmlInputText = (HtmlInputText) child;
 				if (htmlInputText.isValid()) {
-					htmlInputText.getAttributes().replace("styleClass", "form-control is-valid");
+					String styleClass  = (String) htmlInputText.getAttributes().get("styleClass");
+					htmlInputText.getAttributes().replace("styleClass", styleClass + " is-valid");
 					System.out.println("Champ valide.");
 				} else if(! htmlInputText.isValid()) {
-					htmlInputText.getAttributes().replace("styleClass", "form-control is-invalid");
+					String styleClass  = (String) htmlInputText.getAttributes().get("styleClass");
+					htmlInputText.getAttributes().replace("styleClass", styleClass + " is-invalid");
+					
 					System.out.println("Champ invalide.");
 					
 				}

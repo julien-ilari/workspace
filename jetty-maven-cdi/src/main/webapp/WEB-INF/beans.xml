@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
-        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
-
-<beans>
-
-<!-- bean definitions here -->
-
+<?xml version="1.1" encoding="UTF-8"?>
+<beans xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/javaee 
+        http://java.sun.com/xml/ns/javaee/beans_1_1.xsd">
+	<interceptors>
+		<class>fr.app.web.faces.interceptors.LoggingInterceptor</class>
+		<class>fr.app.web.faces.interceptors.TraceInterceptor</class>
+	</interceptors>
 </beans>

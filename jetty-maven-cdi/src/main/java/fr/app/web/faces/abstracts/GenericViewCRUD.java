@@ -17,6 +17,7 @@ import org.primefaces.PrimeFaces;
 import org.primefaces.component.datatable.DataTable;
 
 import fr.app.web.faces.exceptions.MetierException;
+import fr.app.web.faces.interceptors.annotations.Trace;
 import fr.app.web.faces.utils.JSFUtil;
 
 
@@ -170,6 +171,7 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 	 * Action Listener : Ajout d'une nouvealle valeur
 	 * 
 	 */
+	@Trace
 	public void insertValueListener(ActionEvent event) throws IOException {	
 		if(!JSFUtil.facesContext().isPostback())
 			return;

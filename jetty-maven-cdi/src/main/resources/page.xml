@@ -1,0 +1,35 @@
+<formulaire>
+	<id>FORM_001</id>	
+	<messages>
+		<message>
+			<key>001</key>
+			<value>message metier suite au code erreur 001</value>		
+		</message>		
+	</messages>	
+	<items>
+		<item>
+			<id>identifiant</id>
+			<label>titre 1</label>
+			<type>inputText</type>
+			<value>test</value>
+		</item>
+		<item>
+			<id>identifiant2</id>
+			<label>titre 2</label>
+			<type>inputText</type>
+			<value />
+		</item>
+		<item>
+			<id>identifiant24</id>
+			<label>titre 2</label>
+			<type>inputText</type>
+			<value />
+		</item>
+		<item>
+			<id>identifiant25</id>
+			<label>titre 2</label>
+			<type>inputText</type>
+			<value />
+		</item>
+	</items>
+</formulaire>

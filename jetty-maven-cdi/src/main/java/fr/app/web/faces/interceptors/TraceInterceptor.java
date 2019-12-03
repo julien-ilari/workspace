@@ -37,24 +37,27 @@ public class TraceInterceptor implements Serializable {
 			System.out.println("####### field : " + field.getName() + " #######");
 
 			System.out.println("Annotations utilisables pour l'attribut : ");
+			field.setAccessible(true);
 			for (Annotation annotation : field.getAnnotations()) {
 				System.out.println("\t ** " + annotation.annotationType().getName());
 
 				if (annotation instanceof ElementTrace) {
 					ElementTrace element = (ElementTrace) annotation;
 					TraceElement traceElement = new TraceElement(element.libelle());
+					
 					traceElement.setAncienneValeur((String) field.get(oldModel));
 					traceElement.setNouvelleValeur((String) field.get(newModel));
 					
 					String libelle = " [" + traceElement.getLibelle() + "] ";
-					field.setAccessible(true);
+					
 					
 					System.out.println("\t \t *** Nouvelle" + libelle + field.get(newModel) + "");
 					System.out.println("\t \t *** Ancienne" + libelle + field.get(oldModel) + "");
-					field.setAccessible(false);
+					
 				}
 
 			}
+			field.setAccessible(false);
 
 		}
 	}

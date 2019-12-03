@@ -4,6 +4,16 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
 	version="2.0">
 	<namespace>http://www.app.fr/html</namespace>
+	<tag>
+		<tag-name>itemText</tag-name>
+		<source>composants/itemText.xhtml</source>
+		<attribute>
+			<description>Item</description>
+			<name>item</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	
 	
 	<tag>
 		<tag-name>inputText</tag-name>
@@ -48,6 +58,11 @@
 	<tag>
 		<tag-name>buttonAdd</tag-name>
 		<source>composants/button/insert/buttonValidateAdd.xhtml</source>
+		<attribute>
+			<description>identifiant unique dans le form</description>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
 	</tag>
 	
 	
@@ -55,6 +70,11 @@
 	<tag>
 		<tag-name>dataTable</tag-name>
 		<source>composants/data/dataTable.xhtml</source>
+		<attribute>
+			<description>identifiant unique dans le form</description>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
 	</tag>
 	
 	

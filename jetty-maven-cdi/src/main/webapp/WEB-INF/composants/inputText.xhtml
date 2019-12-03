@@ -16,6 +16,7 @@
 		<c:set var="id" value="#{fn:toLowerCase(id)}" />
 	</c:if>
 
+	
 
 	<div class="form-group ">
 		<!-- label -->
@@ -33,9 +34,9 @@
 			<c:if test="#{(not empty upperCase) and (upperCase eq 'yes')}">
 				<input jsf:id="input-#{id}" jsf:value="#{value}" jsf:label="#{label}" style="text-transform:uppercase;"
 				aria-label="#{label}" aria-describedby="input-group-#{id}" 
-				type="text" jsf:styleClass="form-control" placeholder="(vide)" jsf:converter="#{converter.upperCase}" />
+				type="text" jsf:styleClass="form-control"   placeholder="(vide)" jsf:converter="#{converter.upperCase}" />
 			</c:if>
-			
+
 			<c:if test="#{empty upperCase or upperCase eq 'no'}">
 				<input jsf:id="input-#{id}" jsf:value="#{value}"  jsf:label="#{label}"
 				aria-label="#{label}" aria-describedby="input-group-#{id}" 

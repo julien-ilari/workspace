@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="author" content="TMA GFI" />
+	<title>Ref Doc</title>
+	
+	<style type="text/css">
+		.ui-fileupload-buttonbar {
+		    background: transparent none;
+		    border: none;
+		}
+		
+		.ui-fileupload-content {
+		    display: none;
+		}
+		
+		.ui-fileupload .ui-fileinput-button {
+		    background-color: rgba(142, 103, 64, 0.98);
+		}
+	</style>
+	
+	
+</h:head>
+
+<h:body lang="fr">
+
+	
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{formulaireController.loadBean}" />
+	</f:metadata>
+
+	
+		<h:form id="form-edit" prependId="false" enctype="multipart/form-data" >
+		
+		<!-- paramètres-->
+	<ui:param name="controller" value="#{formulaireController}" />
+	<ui:param name="model" value="#{controller.model}" />
+		
+			
+			
+			<h:panelGroup id="block-sujet" layout="block" styleClass="ui-g"> 
+				<p:outputLabel for="@next" value="sujets" />
+		 		<p:selectOneMenu label="sujets"   required="true" id="sujets" placeholder="Selectionner..."
+		 			value="#{controller.model.sujet}" binding="#{controller.uiSelectOneSujet}">
+		            <f:selectItem itemLabel="Selectionner..." itemValue=""
+		            itemDisabled="#{not empty controller.model.sujet}" noSelectionOption="true" />
+		            <f:selectItems value="#{controller.sujets}"  />
+		            <p:ajax  event="itemSelect" listener="#{controller.itemSelectEvent}"
+		           process="@this" immediate="true"  update="@form"   />
+		        </p:selectOneMenu>
+	        </h:panelGroup>
+	       
+	        <h:panelGroup id="block-objet" layout="block" styleClass="ui-g">  
+	        	<p:outputLabel for="@next" value="objets" />      
+		        <p:selectOneMenu required="true" id="objets" placeholder="Selectionner..."
+		        value="#{controller.model.objet}"  binding="#{controller.uiSelectOneObjet}" >
+		            <f:selectItem itemLabel="Selectionner..." itemValue=""  
+		            itemDisabled="#{not empty controller.model.objet}" noSelectionOption="true"  />
+		            <f:selectItems value="#{controller.objets}" />
+		             <p:ajax  event="itemSelect" listener="#{controller.itemSelectEvent}" 
+		             process="@this"  immediate="true" update="@form"   />
+		        </p:selectOneMenu>
+	        	
+	        </h:panelGroup>
+	        
+	         <h:panelGroup id="block-zone" layout="block" styleClass="ui-g">  
+		         <p:outputLabel for="@next" value="Texte" title="saisir formulaire" styleClass="ui-g-12" />
+		   		 <p:inputTextarea rows="6" cols="33" value="#{controller.model.zoneTexte}" />
+	        </h:panelGroup>
+	        
+	     
+	     	<h3>Fichier(s) join(s) au formulaire</h3>
+		 	<ui:fragment rendered="#{not empty controller.uploadedFile}">
+		 
+			  	 <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" />
+				 <p:dialog  header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+					 <h3>Vue des scans</h3>
+					 <p:galleria  value="#{controller.images}" var="imageBase64" panelWidth="500" panelHeight="313" showCaption="false">
+				            <img title="test" alt="test" src="data:image/png;base64,#{imageBase64}"  />
+					    </p:galleria>
+					
+				</p:dialog>
+	        </ui:fragment>
+	        
+	      
+			<ui:repeat value="#{controller.pieceService.piecesAttendues.entrySet().toArray()}" var="item">
+			    #{item.key} = #{item.value}  #{item.value.player}  <br/>
+			    <p:media rendered="#{(item.value.player eq 'PDF')}" value="/pdf?fileName=#{item.key}" width="450" height="455" player="pdf"/>
+			</ui:repeat>
+			
+	        
+	         <h:panelGroup id="block-pieces" layout="block" styleClass="ui-g" >  
+		       
+		   		<h:outputLabel value="Pièces" styleClass="ui-outputlabel ui-widget ui-g-12" for="file-input_input" />
+		  
+				<p:fileUpload id="file-input"  label="Ajouter" widgetVar="file-input"
+		   		 mode="advanced" skinSimple="false" multiple="false" accept="true" 
+		   		 update="@form" auto="true" 
+		   		 fileUploadListener="#{controller.handleFileUpload}"  
+		   		 immediate="true" process="@this" >
+		   		
+		   		</p:fileUpload> 
+		   		
+		   		  
+		   		
+		   		 
+		   		 <p:growl id="messages" showDetail="true" life="8000"  />
+
+    	
+	        </h:panelGroup>
+	        
+	        
+					
+	        
+	        <p:commandButton value="Annuler" type="reset" />	
+	        
+	        <p:commandButton value="Valider" onclick="alert('h:button');"   update="@all"/>
+
+		</h:form>
+</h:body>
+
+</html>

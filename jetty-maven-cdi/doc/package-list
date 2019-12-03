@@ -1,0 +1,13 @@
+fr.app.commons.base.exceptions
+fr.app.commons.base.producers
+fr.app.web.faces.abstracts
+fr.app.web.faces.converters
+fr.app.web.faces.exceptions
+fr.app.web.faces.generator
+fr.app.web.faces.interceptors
+fr.app.web.faces.interceptors.annotations
+fr.app.web.faces.listeners
+fr.app.web.faces.utils
+fr.app.web.faces.validators
+fr.app.web.views
+fr.app.web.views.formulaire

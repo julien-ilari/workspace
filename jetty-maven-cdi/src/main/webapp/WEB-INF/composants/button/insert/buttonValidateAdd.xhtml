@@ -9,11 +9,12 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:composite="http://java.sun.com/jsf/composite">
 
-	<p:commandLink id="btn-insert" styleClass="btn btn-success btn-sm"
+	<p:commandLink id="btn-insert" styleClass="btn btn-success btn-sm" ajax="true"
 					actionListener="#{controller.insertValueListener}" 
 					update="@form" partialSubmit="true" process="@form" 
-						value="Enregistrer" icon="fa fa-fw fa-save">
+						value="Enregistrer" ><i class="fa fa-save" style="margin-left:0.5em;" />
 	</p:commandLink>
+
 
 
 </ui:composition>

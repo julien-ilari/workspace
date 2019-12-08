@@ -17,6 +17,31 @@
 	</context-param>
 	
 	<context-param>
+	    <param-name>primefaces.THEME</param-name>
+	    <param-value>nova-light</param-value>
+	</context-param>
+	
+	<context-param>
+	    <param-name>primefaces.TRANSFORM_METADATA</param-name>
+	    <param-value>true</param-value>
+	</context-param>
+	
+	<context-param>
+	    <param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+	    <param-value>true</param-value>
+	</context-param>
+	
+	<context-param>
+	    <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+	    <param-value>true</param-value>
+	</context-param>
+	
+	<context-param>
+	    <param-name>org.omnifaces.FACES_VIEWS_SCAN_PATHS</param-name>
+	    <param-value>/*.xhtml</param-value>
+	</context-param>
+	
+	<context-param>
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
     </context-param>  
@@ -30,10 +55,7 @@
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<context-param>
-	    <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
-	    <param-value>true</param-value>
-	</context-param>
+
 	
 	<mime-mapping>
      <extension>pdf</extension>
@@ -57,20 +79,6 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 	
-<!--     <servlet> -->
-<!--         <servlet-name>AppJerseyBinder</servlet-name> -->
-<!--         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> -->
-<!--         <init-param> -->
-<!--             <param-name>javax.ws.rs.Application</param-name> -->
-<!--             <param-value>fr.app.AppJerseyBinder</param-value> -->
-<!--         </init-param> -->
-<!--         <load-on-startup>1</load-on-startup> -->
-<!--     </servlet> -->
-<!--     <servlet-mapping> -->
-<!--         <servlet-name>AppJerseyBinder</servlet-name> -->
-<!--         <url-pattern>/api/v1.0/*</url-pattern> -->
-<!--     </servlet-mapping> -->
-
 	<!-- déclaration taglib -->
 	<context-param>
 		<param-name>facelets.LIBRARIES</param-name>
@@ -81,12 +89,12 @@
 	  <param-name>
 	    javax.faces.WEBAPP_RESOURCES_DIRECTORY
 	  </param-name>
-	  <param-value>resources</param-value>
+	  <param-value>/resources</param-value>
 	</context-param>
 	
 	<context-param>
 	    <param-name>primefaces.UPLOADER</param-name>
-	    <param-value>native</param-value>
+	    <param-value>auto</param-value>
 	</context-param>
 	
 	<filter>
@@ -105,15 +113,12 @@
 		<resource-env-ref-type>javax.enterprise.inject.spi.BeanManager</resource-env-ref-type>
 	</resource-env-ref>
 	
-<!-- 	 <servlet> -->
-<!-- 		 <servlet-name>PDF</servlet-name> -->
-<!-- 		 <servlet-class>fr.app.web.views.formulaire.PDFReportServlet</servlet-class> -->
-		 
-<!-- 	 </servlet> -->
-<!-- 	 <servlet-mapping> -->
-<!-- 		 <servlet-name>PDF</servlet-name> -->
-<!-- 		 <url-pattern>/pdf</url-pattern> -->
-<!-- 	 </servlet-mapping> -->
+
+<!-- 	<context-param> -->
+<!--         <param-name>javax.faces.STATE_SAVING_METHOD</param-name> -->
+<!--         <param-value>client</param-value> -->
+<!--     </context-param> -->
+
 
 	<session-config>
 		<session-timeout>30</session-timeout>

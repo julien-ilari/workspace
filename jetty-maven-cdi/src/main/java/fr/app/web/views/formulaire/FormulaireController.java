@@ -16,25 +16,27 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 
+import org.omnifaces.cdi.Param;
+import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.util.Utils;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
+import fr.app.commons.base.exceptions.TechniqueException;
 import fr.app.web.views.formulaire.piece.PieceController;
 import fr.app.web.views.formulaire.piece.PieceModel;
 
 
-@SessionScoped
+@ViewScoped
 @Named("formulaireController")
 public class FormulaireController implements Serializable {
 
@@ -42,6 +44,9 @@ public class FormulaireController implements Serializable {
 	 * serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Inject @Param
+	private String initCode;
 	
 	@Inject
 	private PieceController pieceService;
@@ -59,10 +64,6 @@ public class FormulaireController implements Serializable {
 	 */
 	private SelectOneMenu uiSelectOneObjet;
 	
-	/**
-	 * Liste de selectItem des sujets disponibles
-	 */
-	private List<SelectItem> sujets = new ArrayList<>();
 	
 	/**
 	 * Liste des objets disponibles pour un sujet 
@@ -71,7 +72,7 @@ public class FormulaireController implements Serializable {
 	 *  <li>valeur : liste de selectItem des objets disponibles).</li>
 	 * </ul>
 	 */
-	private Map<String, List<SelectItem>> objets = new HashMap<String, List<SelectItem>>();
+	private Map<SujetModel, List<ObjetModel>> objets = new HashMap<SujetModel, List<ObjetModel>>();
 	
 	/**
 	 * Fichier upoaded (scan à effectué sur le fichier)
@@ -102,11 +103,13 @@ public class FormulaireController implements Serializable {
 		
 	}
 	
-	public void handleFileUpload(FileUploadEvent event) throws IOException {
+	public void handleFileUpload(FileUploadEvent event) throws Exception {
 		uploadedFile =  event.getFile();
 		
 		// Ajout de la nouvelle pièce
 		pieceService.ajouterPiece(PieceType.ATTENDUE, uploadedFile);
+	
+		throw new TechniqueException("test message exception");
         
     }
 	
@@ -131,55 +134,61 @@ public class FormulaireController implements Serializable {
 	 * @param sujet
 	 * @return
 	 */
-	public List<SelectItem> getObjets() {
+	public List<ObjetModel> getObjets() {
 		return objets.get(uiSelectOneSujet.getValue());
 	}
 	
 	
 
+	public List<SujetModel> getSujets() {
+		 List<SujetModel> sujets = new ArrayList<>(objets.keySet());
+		// Trier avec Lambda
+		sujets.sort(new Comparator<SujetModel>() {
+			@Override
+			public int compare(SujetModel o1, SujetModel o2) {
+				return o1.getNom().compareTo(o2.getNom());
+			}
+				
+		});
+
+		
+		return sujets;
+	}
+
+
+
 	@PostConstruct
 	public void postConstruct() {
 		
 		
-		SelectItem sujet2 = new SelectItem("FAMILLE_02", "famille 02");
-		SelectItem sujet3 = new SelectItem("FAMILLE_03", "famille 03");
-		SelectItem sujet1 = new SelectItem("FAMILLE_01", "famille 01");
-		
-		sujets.add(sujet1);
-		sujets.add(sujet2);
-		sujets.add(sujet3);
-		
-		// Trier avec Lambda
-		sujets.sort(new Comparator<SelectItem>() {
-
-			@Override
-			public int compare(SelectItem o1, SelectItem o2) {
-				// TODO Auto-generated method stub
-				return o1.getLabel().compareTo(o2.getLabel());
-			}
-				
-		});
+		SujetModel sujet2 = new SujetModel("FAMILLE_02", "famille 02");
+		SujetModel sujet3 = new SujetModel("FAMILLE_03", "famille 03");
+		SujetModel sujet1 = new SujetModel("FAMILLE_01", "famille 01");
 		
 		
-		List<SelectItem> objets1 = new ArrayList<>();
-		objets1.add(new SelectItem("OBJET_01", "Objet 01"));
-		objets1.add(new SelectItem("OBJET_02", "Objet 02"));
-		objets1.add(new SelectItem("OBJET_03", "Objet 03"));
-		objets.put((String) sujet1.getValue(), objets1);
 		
 		
-		List<SelectItem> objets2 = new ArrayList<>();
-		objets2.add(new SelectItem("OBJET_11", "Objet 11"));
-		objets2.add(new SelectItem("OBJET_12", "Objet 12"));
-		objets2.add(new SelectItem("OBJET_13", "Objet 13"));
-		objets.put((String) sujet2.getValue(), objets2);
 		
 		
-		List<SelectItem> objets3 = new ArrayList<>();
-		objets3.add(new SelectItem("OBJET_01", "Objet 01"));
-		objets3.add(new SelectItem("OBJET_02", "Objet 02"));
-		objets3.add(new SelectItem("OBJET_03", "Objet 03"));
-		objets.put((String) sujet3.getValue(), objets3);
+		List<ObjetModel> objets1 = new ArrayList<>();
+		objets1.add(new ObjetModel("OBJET_01", "Objet 01"));
+		objets1.add(new ObjetModel("OBJET_02", "Objet 02"));
+		objets1.add(new ObjetModel("OBJET_03", "Objet 03"));
+		objets.put(sujet1, objets1);
+		
+		
+		List<ObjetModel> objets2 = new ArrayList<>();
+		objets2.add(new ObjetModel("OBJET_11", "Objet 11"));
+		objets2.add(new ObjetModel("OBJET_12", "Objet 12"));
+		objets2.add(new ObjetModel("OBJET_13", "Objet 13"));
+		objets.put(sujet2, objets2);
+		
+		
+		List<ObjetModel> objets3 = new ArrayList<>();
+		objets3.add(new ObjetModel("OBJET_01", "Objet 01"));
+		objets3.add(new ObjetModel("OBJET_02", "Objet 02"));
+		objets3.add(new ObjetModel("OBJET_03", "Objet 03"));
+		objets.put(sujet3, objets3);
 		
 		
 	}
@@ -199,10 +208,7 @@ public class FormulaireController implements Serializable {
 	}
 
 
-	public List<SelectItem> getSujets() {
-		return sujets;
-	}
-
+	
 
 	public SelectOneMenu getUiSelectOneSujet() {
 		return uiSelectOneSujet;
@@ -237,10 +243,31 @@ public class FormulaireController implements Serializable {
 		return pieceService;
 	}
 
+
+
+	public String getInitCode() {
+		return initCode;
+	}
+
 	
+	private Part file;
+    private byte[] content;
 
+    public void read() throws IOException {
+        content = Utils.toByteArray(file.getInputStream());
+    }
 
+    public Part getFile() {
+        return file;
+    }
 
+    public void setFile(Part file) {
+        this.file = file;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
 
 	
 

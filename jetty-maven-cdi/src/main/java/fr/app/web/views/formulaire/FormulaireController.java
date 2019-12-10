@@ -101,6 +101,8 @@ public class FormulaireController implements Serializable {
 		
 		pieceService.reset();
 		
+		uploadedFile.getFileName();
+		
 	}
 	
 	public void handleFileUpload(FileUploadEvent event) throws Exception {
@@ -109,7 +111,6 @@ public class FormulaireController implements Serializable {
 		// Ajout de la nouvelle pièce
 		pieceService.ajouterPiece(PieceType.ATTENDUE, uploadedFile);
 	
-		throw new TechniqueException("test message exception");
         
     }
 	
@@ -196,6 +197,7 @@ public class FormulaireController implements Serializable {
 	public void loadBean() throws IOException {
 		 if(!FacesContext.getCurrentInstance().isPostback()) {
 	           // Chargement 
+			
 	     }
 	}
 
@@ -217,6 +219,7 @@ public class FormulaireController implements Serializable {
 
 	public void setUiSelectOneSujet(SelectOneMenu uiSelectOneSujet) {
 		this.uiSelectOneSujet = uiSelectOneSujet;
+		 
 	}
 
 

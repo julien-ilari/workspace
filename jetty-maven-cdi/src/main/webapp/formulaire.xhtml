@@ -44,24 +44,34 @@
 		<!-- paramètres-->
 		<ui:param name="controller" value="#{formulaireController}" />
 		<ui:param name="model" value="#{controller.model}" />
-
- 		<p:messages><p:autoUpdate /></p:messages>
+		<f:metadata>
+		<f:event type="preRenderView" listener="#{controller.loadBean}" />
+		</f:metadata>
+		
+ 		<p:messages globalOnly="true" showDetail="true" showSummary="false" ><p:autoUpdate /></p:messages>
+ 		<o:messages ><p:autoUpdate /></o:messages>
+ 		
  		
  		<h1>Formulaire exemple</h1>
 	
-		<h:form id="form-edit" prependId="false" enctype="multipart/form-data" styleClass="ui-g-6">
-		
+		<h:form id="form-edit" prependId="false" enctype="multipart/form-data">
+			
+			
+			
 			<h:panelGroup layout="block" styleClass="ui-g"> 
 			<ul>
 			<li><h:outputText value="URL :"/> <o:url /></li>
 			<li><h:outputText value="Domaine :"/><o:url domain="/" /></li>
 			<li><h:outputText value="Code Formulaire : "/><h:outputText value="#{controller.initCode}" /></li>
 			</ul>
+			
 			</h:panelGroup>
 			
-			<h:panelGroup id="block-sujet" layout="block" styleClass="ui-g"> 
-				<p:outputLabel  for="@next" value="sujets" title="sujets" style="width:5em" />
-		 		<p:selectOneMenu label="sujets"  id="sujets" style="width:15em;line-height: 1.5;"
+			<h:panelGroup id="block-sujet" layout="block" styleClass="input-group mb-3"> 
+				<div class="input-group-prepend">
+				<p:outputLabel styleClass="input-group-text"  for="@next" value="sujets" title="sujets" style="width:5em" />
+				 </div>
+		 		<p:selectOneMenu label="sujets"  id="sujets" style="width:15em;"
 		 		autoWidth="true" filter="true"  filterMatchMode="contains"
 		 		placeholder="famille" converter="omnifaces.SelectItemsIndexConverter"
 		 			value="#{controller.model.sujet}" binding="#{controller.uiSelectOneSujet}">
@@ -75,10 +85,11 @@
 		        #{controller.model.sujet}
 	        </h:panelGroup>
 	       
-	        <h:panelGroup id="block-objet" layout="block" styleClass="ui-g">  
-	       
-	        	<p:outputLabel for="@next" value="objets" style="width:5em" />      
-		        <p:selectOneMenu id="objets" autoWidth="true" title="objets" style="width:15em;line-height: 1.5;" 
+	        <h:panelGroup id="block-objet" layout="block" styleClass="input-group mb-3">  
+	       		<div class="input-group-prepend">
+	        	<p:outputLabel styleClass="input-group-text" for="@next" value="objets" style="width:5em" />  
+	        	</div>    
+		        <p:selectOneMenu id="objets" autoWidth="true" title="objets" style="width:15em;" 
 		        filter="true"  filterMatchMode="contains"
 		        placeholder="objet" converter="omnifaces.SelectItemsIndexConverter"
 		        value="#{controller.model.objet}"  binding="#{controller.uiSelectOneObjet}" >

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<c:if test="#{empty id}">
+		<c:set var="id" value="#{fn:replace(label, ' ', '-')}" />
+		<c:set var="id" value="#{fn:replace(id, '\\.', '')}" />
+		<c:set var="id" value="#{fn:toLowerCase(id)}" />
+	</c:if>
+	
+		
+			
+
+	<h:panelGroup layout="block" styleClass="form-group" rendered="#{(empty rendered)?true:rendered}">
+		
+		
+		
+		<!-- input-group margin-right: -6px;-->
+		<div class="input-group input-group-sm mb-1 " id="input-group-text-#{id}">
+			<!-- label -->
+			<div class="input-group-prepend ">
+				<p:outputLabel id="label-#{id}" 
+				for="input-#{id}" value="#{label}" styleClass="input-group-text w-100" />		
+			</div>
+
+			<!-- input upperCase -->
+			<input jsf:id="input-#{id}" jsf:value="#{value}" jsf:label="#{label}" 
+			jsf:styleClass="form-control#{(upperCase eq 'yes')?' text-uppercase':''}"   
+			jsf:converter="#{(upperCase eq 'yes')?converter.upperCase:''}"
+			aria-label="#{label}" aria-labelledby="label-#{id}" aria-describedby="input-group-text-#{id}" 
+			type="text" placeholder="(vide)" />
+			
+			<h:panelGroup layout="block" styleClass="input-group-append" rendered="#{not empty faClass}">
+				<div class="input-group-text">
+					<em class="fa #{faClass}" />
+				</div>
+			</h:panelGroup>
+			
+			<h:message id="message-#{id}" for="input-#{id}" errorClass="invalid-feedback" />
+
+		</div>
+		
+	</h:panelGroup>
+</ui:composition>

@@ -20,6 +20,10 @@
 	    <param-name>primefaces.THEME</param-name>
 	    <param-value>nova-light</param-value>
 	</context-param>
+<!-- 	<context-param> -->
+<!-- 	  <param-name>primefaces.THEME</param-name> -->
+<!-- 	  <param-value>bootstrap</param-value> -->
+<!-- 	</context-param> -->
 	
 	<context-param>
 	    <param-name>primefaces.TRANSFORM_METADATA</param-name>
@@ -81,7 +85,7 @@
 	
 	<!-- déclaration taglib -->
 	<context-param>
-		<param-name>facelets.LIBRARIES</param-name>
+		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
 		<param-value>/WEB-INF/my.taglib.xml</param-value>
 	</context-param>
 	
@@ -123,5 +127,19 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
+	
+	 <!-- Other application configuration -->
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error/exception.jsf</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/ui/error/viewExpired.jsf</location>
+    </error-page>
+    
+   
+
+	
 
 </web-app>

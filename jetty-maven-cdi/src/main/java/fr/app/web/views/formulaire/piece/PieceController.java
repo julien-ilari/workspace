@@ -12,11 +12,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
+import javax.validation.constraints.NotNull;
 
 import org.apache.commons.io.FilenameUtils;
 import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.model.UploadedFile;
 
+import fr.app.commons.base.exceptions.TechniqueException;
+import fr.app.web.faces.interceptors.annotations.CatchException;
+import fr.app.web.faces.interceptors.annotations.LogInterceptor;
 import fr.app.web.views.formulaire.PieceType;
 
 @ViewScoped
@@ -27,6 +31,19 @@ public class PieceController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
+	
+	private static final String message = "paramètre null.";
+	
+
+	public void testNotNUll(@NotNull final String test) throws TechniqueException{
+		
+		
+		
+		
+		
+		
+	}
 
 
 

@@ -21,6 +21,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
+import javax.validation.constraints.NotNull;
 
 import org.omnifaces.cdi.Param;
 import org.omnifaces.cdi.ViewScoped;
@@ -32,10 +33,15 @@ import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
 import fr.app.commons.base.exceptions.TechniqueException;
+import fr.app.web.faces.exceptions.MetierException;
+import fr.app.web.faces.interceptors.annotations.CatchException;
+import fr.app.web.faces.interceptors.annotations.LogInterceptor;
 import fr.app.web.views.formulaire.piece.PieceController;
 import fr.app.web.views.formulaire.piece.PieceModel;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j 
+@CatchException
 @ViewScoped
 @Named("formulaireController")
 public class FormulaireController implements Serializable {
@@ -44,6 +50,7 @@ public class FormulaireController implements Serializable {
 	 * serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	
 	@Inject @Param
 	private String initCode;
@@ -92,8 +99,10 @@ public class FormulaireController implements Serializable {
 	 * <h1>Event : Selection d'un item sur la liste</h1>
 	 * <p>La méthode doit faire un reset pour charger la nouvelle configuration selectionnée</p> 
 	 * @param event
+	 * @throws TechniqueException 
 	 */
-	public void itemSelectEvent(AjaxBehaviorEvent event){
+
+	public void itemSelectEvent(AjaxBehaviorEvent event) throws TechniqueException{
 		// objet prendra la valeur null lors de l'appel de l'evenement sur la liste des sujets
 		if(uiSelectOneSujet == event.getComponent()) {
 			model.setObjet(null);
@@ -101,15 +110,36 @@ public class FormulaireController implements Serializable {
 		
 		pieceService.reset();
 		
-		uploadedFile.getFileName();
+		log.debug("Message test");
+		
+		pieceService.testNotNUll(null);
+		
 		
 	}
 	
-	public void handleFileUpload(FileUploadEvent event) throws Exception {
-		uploadedFile =  event.getFile();
+	private static final String message = "paramètre null.";
+	
+	
+
+	@LogInterceptor
+	@CatchException
+	public void testNotNUll(@NotNull(message=message) final String test) throws TechniqueException{
 		
-		// Ajout de la nouvelle pièce
-		pieceService.ajouterPiece(PieceType.ATTENDUE, uploadedFile);
+		
+		
+		//ValidationInterceptor
+		
+	}
+	
+	@CatchException
+	public void handleFileUpload(FileUploadEvent event) throws MetierException  {
+		
+		
+		throw new MetierException("Grosse pute application");
+//		uploadedFile =  event.getFile();
+//		
+//		// Ajout de la nouvelle pièce
+//		pieceService.ajouterPiece(PieceType.ATTENDUE, uploadedFile);
 	
         
     }

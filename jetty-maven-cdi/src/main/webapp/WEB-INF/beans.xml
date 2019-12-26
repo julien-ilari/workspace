@@ -5,7 +5,8 @@
         http://java.sun.com/xml/ns/javaee 
         http://java.sun.com/xml/ns/javaee/beans_1_1.xsd">
 	<interceptors>
-		<class>fr.app.web.faces.interceptors.LoggingInterceptor</class>
 		<class>fr.app.web.faces.interceptors.TraceInterceptor</class>
+		<class>fr.app.web.faces.interceptors.ExceptionInterceptor</class>
+		<class>fr.app.web.faces.interceptors.LoggingInterceptor</class>
 	</interceptors>
 </beans>

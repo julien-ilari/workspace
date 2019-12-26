@@ -4,29 +4,31 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
 	version="2.0">
 	<namespace>http://www.app.fr/html</namespace>
-	<tag>
-		<tag-name>itemText</tag-name>
-		<source>composants/itemText.xhtml</source>
-		<attribute>
-			<description>Item</description>
-			<name>item</name>
-			<required>true</required>
-		</attribute>
-	</tag>
-	
 	
 	<tag>
 		<tag-name>inputText</tag-name>
-		<source>composants/inputText.xhtml</source>
+		<source>composants/input/inputText.xhtml</source>
+		<attribute>
+			<description>identifiant unique</description>
+			<name>id</name>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Icon pour le label (exemple : 'fa-plus')</description>
+			<name>faClass</name>
+			<type>java.lang.String</type>
+		</attribute>
 		<attribute>
 			<description>Valeur de l'input text</description>
 			<name>value</name>
 			<required>true</required>
-			<method-signature></method-signature>
+			<type>java.lang.Object</type>
 		</attribute>
 		<attribute>
 			<description>label de l'input text</description>
 			<name>label</name>
+			<required>true</required>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description>Mettre à yes pour activer upperCase sur l'élément</description>
@@ -35,18 +37,22 @@
 		<attribute>
 			<description>Class à applique au composant html label de l'input</description>
 			<name>styleClassLabel</name>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description>Class à applique au composant html input</description>
 			<name>styleClassInput</name>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description>Class à applique au composant html message de l'input</description>
 			<name>styleClassMessage</name>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description>La velur doit être unique, true pour oui et false pour non. par défaut false.</description>
 			<name>uniqueText</name>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description>lier le composant au back-end bean</description>
@@ -54,14 +60,81 @@
 		</attribute>
 	</tag>
 	
+	<tag>
+		<tag-name>datePiker</tag-name>
+		<source>composants/input/datePiker.xhtml</source>
+		<attribute>
+			<description>identifiant unique dans le form</description>
+			<name>id</name>
+		</attribute>
+		<attribute>
+			<description>Valeur de l'input text</description>
+			<name>value</name>
+			<required>true</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>label de l'input text</description>
+			<name>label</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Afficher du composant seulement si condition vrai (par défaut vrai)</description>
+			<name>rendered</name>
+			<type>java.lang.Boolean</type>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<tag-name>selectOneItem</tag-name>
+		<source>composants/select/selectOneItem.xhtml</source>
+		<attribute>
+			<description>identifiant unique dans le form</description>
+			<name>id</name>
+		</attribute>
+		<attribute>
+			<description>Valeur du selectOneItem</description>
+			<name>value</name>
+			<required>true</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>Items disponibles</description>
+			<name>value</name>
+			<required>true</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>label de l'input text</description>
+			<name>label</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Afficher du composant seulement si condition vrai (par défaut vrai)</description>
+			<name>rendered</name>
+			<type>java.lang.Boolean</type>
+		</attribute>
+	</tag>
+	
+	
 	
 	<tag>
 		<tag-name>buttonAdd</tag-name>
-		<source>composants/button/insert/buttonValidateAdd.xhtml</source>
+		<source>composants/button/insert/buttonAdd.xhtml</source>
 		<attribute>
 			<description>identifiant unique dans le form</description>
 			<name>id</name>
 			<required>true</required>
+		</attribute>
+	</tag>
+	<tag>
+		<tag-name>buttonValidateAdd</tag-name>
+		<source>composants/button/insert/buttonValidateAdd.xhtml</source>
+		<attribute>
+			<description>identifiant unique dans le form</description>
+			<name>id</name>
 		</attribute>
 	</tag>
 	

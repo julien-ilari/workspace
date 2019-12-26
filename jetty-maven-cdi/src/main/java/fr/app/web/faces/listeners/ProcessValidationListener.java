@@ -1,10 +1,17 @@
 package fr.app.web.faces.listeners;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.component.html.HtmlInputText;
+import javax.faces.component.html.HtmlOutputLabel;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class ProcessValidationListener implements PhaseListener {
 
@@ -12,6 +19,11 @@ public class ProcessValidationListener implements PhaseListener {
 
 	// The phase where the listener is going to be called
 	private PhaseId phaseId = PhaseId.PROCESS_VALIDATIONS;
+	
+	private Map<UIComponent, String> classCompoent = new HashMap<UIComponent, String>();
+	
+	private Map<UIInput, HtmlOutputLabel> inputLabel = new HashMap<UIInput, HtmlOutputLabel>();
+	
 
 	/**
 	 * Recursively walk through the view tree,
@@ -22,15 +34,53 @@ public class ProcessValidationListener implements PhaseListener {
 	
 	public void clearInitialState(UIComponent component) {
 		for (UIComponent child : component.getChildren()) {
+			
+			
 			// Initial State HtmlInputText
-			if (child instanceof HtmlInputText) {
-				((HtmlInputText) child).getAttributes().replace("styleClass", "form-control");
-				((HtmlInputText) child).clearInitialState();
-			} 
+			if (child instanceof UIInput) {
+				UIInput htmlInputText = (UIInput) child;
+				
+				// Si non existant dans la map (savegarde le styleClass)
+				if(!classCompoent.containsKey(htmlInputText)) {
+					String styleClass = (String) htmlInputText.getAttributes().get("styleClass");
+					if(null != styleClass) {
+						styleClass = styleClass.replace(" is-valid", "");
+						styleClass = styleClass.replace(" is-invalid", "");
+					}
+						classCompoent.put(htmlInputText,styleClass);
+					
+					
+				}
 
+				
+			} else if(child instanceof HtmlOutputLabel) {
+				HtmlOutputLabel htmlOutputLabel = (HtmlOutputLabel) child;
+				for (UIComponent uiChildren : htmlOutputLabel.getParent().getChildren()) {
+					
+					String forLabel = (String) htmlOutputLabel.getAttributes().get("for");
+					if(uiChildren instanceof UIInput) {
+						UIInput htmlInputText = (UIInput) uiChildren;
+						String idInput = (String) htmlInputText.getAttributes().get("id");
+						
+						
+						if(forLabel.equals(idInput)) {
+							if(!inputLabel.containsKey(htmlInputText)) {
+							inputLabel.put(htmlInputText, htmlOutputLabel);
+							}
+							
+						}
+						
+					}
+				}
+				
+		
 
+			}
+			
+			
 			// Process next node
 			clearInitialState(child);
+			
 		}
 	}
 
@@ -42,18 +92,17 @@ public class ProcessValidationListener implements PhaseListener {
 		// Go to every child
 		for (UIComponent child : component.getChildren()) {
 
-			if (child instanceof HtmlInputText) {
-				HtmlInputText htmlInputText = (HtmlInputText) child;
-				if (htmlInputText.isValid()) {
-					String styleClass  = (String) htmlInputText.getAttributes().get("styleClass");
-					htmlInputText.getAttributes().replace("styleClass", styleClass + " is-valid");
-					System.out.println("Champ valide.");
-				} else if(! htmlInputText.isValid()) {
-					String styleClass  = (String) htmlInputText.getAttributes().get("styleClass");
-					htmlInputText.getAttributes().replace("styleClass", styleClass + " is-invalid");
-					
-					System.out.println("Champ invalide.");
-					
+			if (child instanceof UIInput) {
+				UIInput uIInput = (UIInput) child;
+				HtmlOutputLabel htmlOutputLabel = inputLabel.get( (UIInput) child);
+				
+				String styleClassInput  = classCompoent.get(child);
+				//String styleClassLabel  = (String) htmlOutputLabel.getAttributes().get("styleClass");
+				
+				if (uIInput.isValid()) {
+					uIInput.getAttributes().replace("styleClass", StringUtils.defaultString(styleClassInput) + " is-valid");
+				}else {
+					uIInput.getAttributes().replace("styleClass", StringUtils.defaultString(styleClassInput) + " is-invalid");
 				}
 
 			} 

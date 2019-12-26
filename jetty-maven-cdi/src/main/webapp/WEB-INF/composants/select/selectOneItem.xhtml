@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+
+	<c:if test="#{empty id}">
+		<c:set var="id" value="#{fn:replace(label, ' ', '-')}" />
+		<c:set var="id" value="#{fn:replace(id, '\\.', '')}" />
+		<c:set var="id" value="#{fn:toLowerCase(id)}" />
+	</c:if>
+	
+		
+			
+
+	<h:panelGroup  id="panelGroup-#{id}"  layout="block" styleClass="form-group" rendered="#{(empty rendered)?true:rendered}">
+		
+		
+		
+		<!-- input-group margin-right: -6px;-->
+		<div class="input-group input-group-sm mb-1 " id="input-group-#{id}">
+			<!-- label -->
+			<div class="input-group-prepend ">
+				<p:outputLabel id="label-#{id}" 
+				for="input-#{id}" value="#{label}" styleClass="input-group-text w-100" />		
+			</div>
+
+			<!-- input upperCase -->
+		 		<h:selectOneMenu styleClass="form-control"
+		 		label="#{label}"  id="input-#{id}" placeholder="Selectionner..." 
+		 		value="#{controller.model.sujet}">
+		            <f:selectItem itemLabel="Selectionner..."  itemValue="#{null}"
+		            itemDisabled="#{not empty controller.model.sujet}" noSelectionOption="true" />
+		            <f:selectItems value="#{controller.sujets}" var="entity" itemLabel="#{entity.nom}" itemValue="#{entity}"  />
+		           <f:converter converterId="omnifaces.SelectItemsConverter" />
+		          
+		    </h:selectOneMenu>
+			
+			<h:panelGroup layout="block" styleClass="input-group-append" rendered="#{not empty faClass}">
+				<div class="input-group-text">
+					<em class="fa #{faClass}" />
+				</div>
+			</h:panelGroup>
+			
+			<h:message id="message-#{id}" for="input-#{id}" errorClass="invalid-feedback" />
+
+		</div>
+		
+	</h:panelGroup>
+
+
+</ui:composition>

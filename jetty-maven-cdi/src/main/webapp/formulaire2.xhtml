@@ -8,7 +8,9 @@
 	xmlns:of="http://omnifaces.org/functions"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8" lang="fr" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="author" content="TMA GFI" />
 	<title>Ref Doc</title>
 	
@@ -26,6 +28,9 @@
 		    background-color: rgba(142, 103, 64, 0.98);
 		}
 	</style>
+		<!-- Bootstrap -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputScript library="js" name="bootstrap.min.js" />
 	
 	
 </h:head>
@@ -105,7 +110,7 @@
 		  
 				<p:fileUpload id="file-input"  label="Ajouter" widgetVar="file-input"
 		   		 mode="advanced" skinSimple="false" multiple="false" accept="true" 
-		   		 update="@form" auto="true" fileUploadListener="#{controller.handleFileUpload}" performVirusScan=""  
+		   		 update="@form" auto="true" fileUploadListener="#{controller.handleFileUpload}"  
 		   		  process="@this" >
 		   		
 		   		</p:fileUpload> 
@@ -133,7 +138,7 @@
       
 	        <p:commandButton value="Annuler" type="reset" />	
 	        
-	        <p:commandButton value="Valider" type="submit" />
+	        <p:commandButton value="Valider test" immediate="true" partialSubmit="true" process="@this" actionListener="#{controller.testNotNUll(controller.uploadedFile)}" />
 
 		</h:form>
 </h:body>

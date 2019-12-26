@@ -11,12 +11,17 @@ public class TechniqueException extends Exception implements Serializable {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1117875240598324461L;
 	
+	/**
+	 * Message d'aide pour le débug (renseigné par le développeur)
+	 */
+	private String messageFonctionnel = "Aucune indication complémentaire pour l'erreur (cf. exception)."; 
+	
 	
     /**
      *
      */
     public TechniqueException() {
-        super();
+        super("Une erreur est survenue.");
     }
 
     /**
@@ -34,6 +39,7 @@ public class TechniqueException extends Exception implements Serializable {
     
     public TechniqueException(final String messageFonctionnel, final String message, final Throwable cause) {
         super(message, cause);
+        this.messageFonctionnel = messageFonctionnel;
     }
 
 

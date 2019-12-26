@@ -6,118 +6,88 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:html="http://www.app.fr/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8" lang="fr" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="author" content="TMA GFI" />
 	<title>Ref Doc</title>
-	
+
 	<style type="text/css">
 		.ui-fileupload-buttonbar {
-		    background: transparent none;
-		    border: none;
+			background: transparent none;
+			border: none;
 		}
 		
 		.ui-fileupload-content {
-		    display: none;
+			display: none;
 		}
 		
 		.ui-fileupload .ui-fileinput-button {
-		    background-color: rgba(142, 103, 64, 0.98);
+			background-color: rgba(142, 103, 64, 0.98);
 		}
 	</style>
 	
-	<!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
-    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
+
+	<h:outputScript library="js" name="jquery.min.js" />
 	
-	<!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
-    crossorigin="anonymous"></script>
-	
-	
+	<!-- Bootstrap -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css"  />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+
 </h:head>
 
-<h:body lang="fr" style="padding:0.5em">
-		
-		<!-- paramètres-->
-		<ui:param name="controller" value="#{formulaireController}" />
-		<ui:param name="model" value="#{controller.model}" />
-		<f:metadata>
-		<f:event type="preRenderView" listener="#{controller.loadBean}" />
-		</f:metadata>
-		
- 		<p:messages globalOnly="true" showDetail="true" showSummary="false" ><p:autoUpdate /></p:messages>
- 		<o:messages ><p:autoUpdate /></o:messages>
- 		
- 		
- 		<h1>Formulaire exemple</h1>
+<h:body style="padding:0.5em" >
+
+	<!-- paramètres-->
+	<ui:param name="controller" value="#{formulaireController}" />
 	
-		<h:form id="form-edit" prependId="false" enctype="multipart/form-data">
-			
-			
-			
-			<h:panelGroup layout="block" styleClass="ui-g"> 
-			<ul>
-			<li><h:outputText value="URL :"/> <o:url /></li>
-			<li><h:outputText value="Domaine :"/><o:url domain="/" /></li>
-			<li><h:outputText value="Code Formulaire : "/><h:outputText value="#{controller.initCode}" /></li>
-			</ul>
-			
-			</h:panelGroup>
-			
-			<h:panelGroup id="block-sujet" layout="block" styleClass="input-group mb-3"> 
-				<div class="input-group-prepend">
-				<p:outputLabel styleClass="input-group-text"  for="@next" value="sujets" title="sujets" style="width:5em" />
-				 </div>
-		 		<p:selectOneMenu label="sujets"  id="sujets" style="width:15em;"
-		 		autoWidth="true" filter="true"  filterMatchMode="contains"
-		 		placeholder="famille" converter="omnifaces.SelectItemsIndexConverter"
-		 			value="#{controller.model.sujet}" binding="#{controller.uiSelectOneSujet}">
-		            <f:selectItem itemLabel="Selectionner un sujet"  itemValue="#{null}"
-		            itemDisabled="#{not empty controller.model.sujet}" noSelectionOption="true" />
-		            <f:selectItems value="#{controller.sujets}" var="entity" itemLabel="#{entity.nom}" itemValue="#{entity}"  />
-		            <p:ajax  event="itemSelect" listener="#{controller.itemSelectEvent}"
-		           process="@this" immediate="true"  update="@form">
-		           </p:ajax>
-		        </p:selectOneMenu>
-		        #{controller.model.sujet}
-	        </h:panelGroup>
-	       
-	        <h:panelGroup id="block-objet" layout="block" styleClass="input-group mb-3">  
-	       		<div class="input-group-prepend">
-	        	<p:outputLabel styleClass="input-group-text" for="@next" value="objets" style="width:5em" />  
-	        	</div>    
-		        <p:selectOneMenu id="objets" autoWidth="true" title="objets" style="width:15em;" 
-		        filter="true"  filterMatchMode="contains"
-		        placeholder="objet" converter="omnifaces.SelectItemsIndexConverter"
-		        value="#{controller.model.objet}"  binding="#{controller.uiSelectOneObjet}" >
-		            <f:selectItem itemLabel="Selectionner un objet"  itemValue="#{null}"  
-		            itemDisabled="#{not empty controller.model.objet}" noSelectionOption="true"  />
-		            <f:selectItems value="#{controller.objets}" var="entity" itemLabel="#{entity.nom}" itemValue="#{entity}" />
-		             <p:ajax  event="itemSelect" listener="#{controller.itemSelectEvent}" 
-		             process="@this"  immediate="true" update="@form"   />
-		        </p:selectOneMenu>
-	        	 #{controller.model.objet}
-	        </h:panelGroup>
-	        
-	         <h:panelGroup id="block-zone" layout="block" styleClass="ui-g">  
-		         <p:outputLabel for="@next" value="Texte" title="saisir formulaire" styleClass="ui-g-12" />
-		   		 <p:inputTextarea rows="6" cols="70" value="#{controller.model.zoneTexte}" />
-	        </h:panelGroup>
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{controller.loadBean}" />
+	</f:metadata>
 
+	<p:messages showDetail="true" showSummary="false">
+		<p:autoUpdate />
+	</p:messages>
 
+	<h1>Formulaire exemple</h1>
+	
+	<h:form id="form" styleClass="conteneur" prependId="false" enctype="multipart/form-data" >
+		<p:autoUpdate></p:autoUpdate>
 
-		<h:panelGroup id="group-button" layout="block" styleClass="ui-g-12">
-			<p:commandButton value="Annuler" action="#{controller.loadBean}">
-    		<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
-			</p:commandButton>
-
-			<p:commandButton value="Valider" type="submit" />
-		</h:panelGroup>
 
 	</h:form>
+	
+		<script type="text/javascript">
+	      	 $(function () {
+	
+	      		$.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+				//  Prend a string. Les valeurs valides sont 'days', 'months', 'years'et'decades'
+	      			viewMode : 'days',
+	      			locale : moment.locale('fr'),
+		            format: 'L'
+	      		});
+	      		
+	      		$('#datepicker1').datetimepicker({ 
+	      			locale: moment.locale(),
+	      			boutons : {
+	       		  		showToday: true,
+	       		  	    showClear: true,
+	       		  	    showClose: true
+	       		  		
+	       		   	 },
+	       		   	 sideBySide: true, 
+	       		   	 debug: true 
+	      		
+	      		});
+	         });
+	   		 </script>
+	
+	
+
 </h:body>
 
 </html>

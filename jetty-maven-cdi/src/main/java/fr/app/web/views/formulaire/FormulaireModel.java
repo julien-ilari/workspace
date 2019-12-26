@@ -35,6 +35,7 @@ public class FormulaireModel implements Serializable {
 	/**
 	 * Zone de texte générique pour la saisie du formulaire.
 	 */
+	@NotNull
 	private String zoneTexte;
 	
 

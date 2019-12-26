@@ -4,6 +4,13 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
         http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
+    
+     <application>
+	  <resource-bundle>
+		<base-name>messages</base-name>
+		<var>msg</var>
+	   </resource-bundle>
+     </application>
      
     <lifecycle>
         <phase-listener>fr.app.web.faces.listeners.RestorViewListener</phase-listener>
@@ -17,8 +24,17 @@
 		</system-event-listener>
    </application>
    
-   	<factory>
-    	<exception-handler-factory>org.omnifaces.exceptionhandler.FacesMessageExceptionHandlerFactory</exception-handler-factory>
+   
+   <factory>
+   			<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
+<!--     	<exception-handler-factory>fr.app.web.faces.ExceptionHandlerFactory</exception-handler-factory> -->
+<!-- 		<exception-handler-factory>fr.app.web.faces.ExceptionHandlerFactory</exception-handler-factory> -->
 	</factory>
+	
+	
+	
+	
+	
+	
 
 </faces-config>

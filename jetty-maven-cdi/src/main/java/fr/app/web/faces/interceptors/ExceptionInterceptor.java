@@ -5,6 +5,7 @@ import java.text.MessageFormat;
 import java.util.List;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -13,9 +14,13 @@ import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
 import javax.faces.component.html.HtmlForm;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import javax.validation.executable.ExecutableValidator;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,10 +41,15 @@ public class ExceptionInterceptor implements Serializable {
 	private static final char SEPARATOR = ':';
 
 	@Inject
+	@Named(value="bundle")
 	private ResourceBundle bundle;
 
 	@Inject
 	private ExceptionHelper exceptionHelper;
+	
+	 @Inject
+	 private Validator validator;
+
 
 	/**
 	 * Traitement erreur Métier
@@ -73,6 +83,7 @@ public class ExceptionInterceptor implements Serializable {
 		
 		try {
 			ic.proceed();
+			
 		} catch (TechniqueException exception) {		
 			traiterExceptionTechnique((TechniqueException) exception);
 		} catch (MetierException exception) {		
@@ -84,18 +95,41 @@ public class ExceptionInterceptor implements Serializable {
 		
 	}
 	
+	private void processViolations(Set<ConstraintViolation<Object>> violations) {
+		violations.stream().map(ConstraintViolation::getMessage).forEach(System.out::println);
+	}
+
+	
 	/**
 	 * Catch exception .
 	 *
-	 * @param ic the ic
+	 * @param ctx the ic
 	 * @return object
 	 * @author
 	 * @throws Throwable 
 	 */
 	@AroundInvoke
-	public Object catchException(final InvocationContext ic) throws Throwable  {
-		try {
-			return ic.proceed();
+	public Object catchException(final InvocationContext ctx) throws Throwable  {
+		System.out.println("ExceptionInterceptor catchException ");
+		Set<ConstraintViolation<Object>> violations;
+        ExecutableValidator executableValidator = validator.forExecutables();
+        violations = executableValidator.validateParameters(
+                ctx.getTarget(), ctx.getMethod(), ctx.getParameters());
+        processViolations(violations);
+        
+      
+		
+		
+		try {  
+	        Object result = ctx.proceed();
+	       
+	        violations = executableValidator.validateReturnValue(
+	                ctx.getTarget(), ctx.getMethod(), result);
+	        processViolations(violations);
+	        
+			
+			
+			return result;
 		} catch (TechniqueException exception) {		
 			traiterExceptionTechnique((TechniqueException) exception);
 		} catch (MetierException exception) {		

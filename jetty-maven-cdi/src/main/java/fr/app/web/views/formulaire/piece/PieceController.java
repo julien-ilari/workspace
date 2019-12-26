@@ -12,14 +12,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 
 import org.apache.commons.io.FilenameUtils;
+import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.model.UploadedFile;
 
 import fr.app.web.views.formulaire.PieceType;
 
-@SessionScoped
+@ViewScoped
 public class PieceController implements Serializable {
 
 	/**

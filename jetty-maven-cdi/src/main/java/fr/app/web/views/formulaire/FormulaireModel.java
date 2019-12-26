@@ -3,6 +3,7 @@ package fr.app.web.views.formulaire;
 import java.io.Serializable;
 
 import javax.enterprise.context.Dependent;
+import javax.validation.constraints.NotNull;
 
 /**
  * Représentation des informations du formulaire à transmettre.
@@ -22,32 +23,31 @@ public class FormulaireModel implements Serializable {
 	/**
 	 * Sujet selectionné.
 	 */
-	private String sujet;
+	@NotNull
+	private SujetModel sujet;
 	
 	/**
 	 * Objet selectionné.
 	 */
-	private String objet;
+	@NotNull
+	private ObjetModel objet;
 	
 	/**
 	 * Zone de texte générique pour la saisie du formulaire.
 	 */
 	private String zoneTexte;
 	
-	
-	
-	
-	
-	public String getSujet() {
+
+	public SujetModel getSujet() {
 		return sujet;
 	}
-	public void setSujet(String sujet) {
+	public void setSujet(SujetModel sujet) {
 		this.sujet = sujet;
 	}
-	public String getObjet() {
+	public ObjetModel getObjet() {
 		return objet;
 	}
-	public void setObjet(String objet) {
+	public void setObjet(ObjetModel objet) {
 		this.objet = objet;
 	}
 	public String getZoneTexte() {

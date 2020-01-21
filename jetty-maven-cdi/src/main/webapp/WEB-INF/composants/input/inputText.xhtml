@@ -33,7 +33,7 @@
 
 			<!-- input upperCase -->
 			<input jsf:id="input-#{id}" jsf:value="#{value}" jsf:label="#{label}" 
-			jsf:styleClass="form-control#{(upperCase eq 'yes')?' text-uppercase':''}"   
+			jsf:styleClass="form-control #{(upperCase eq 'yes')?' text-uppercase':''}"   
 			jsf:converter="#{(upperCase eq 'yes')?converter.upperCase:''}"
 			aria-label="#{label}" aria-labelledby="label-#{id}" aria-describedby="input-group-text-#{id}" 
 			type="text" placeholder="(vide)" />

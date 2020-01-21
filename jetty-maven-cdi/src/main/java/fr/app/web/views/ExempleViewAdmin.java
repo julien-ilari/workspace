@@ -3,6 +3,7 @@ package fr.app.web.views;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.beanutils.BeanUtils;
 
 import fr.app.web.faces.abstracts.GenericViewCRUD;
+import lombok.Getter;
 
 @ViewScoped
 @Named
@@ -35,6 +37,9 @@ public class ExempleViewAdmin extends GenericViewCRUD<ExempleModel> {
 
 	
 	private Formulaire formulaire;
+	
+	@Getter
+	private List<String> list = new ArrayList<String>() {{ add("string 1"); add("string 2"); }};
 
 	public void createHtmlInputText(ActionEvent event) throws JAXBException {
 		

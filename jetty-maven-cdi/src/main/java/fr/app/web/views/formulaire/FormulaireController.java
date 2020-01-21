@@ -135,7 +135,7 @@ public class FormulaireController implements Serializable {
 	public void handleFileUpload(FileUploadEvent event) throws MetierException  {
 		
 		
-		throw new MetierException("Grosse pute application");
+		throw new MetierException("Grosse pute application", "piece" + event.getComponent().getAttributes().get("rowId"));
 //		uploadedFile =  event.getFile();
 //		
 //		// Ajout de la nouvelle pièce

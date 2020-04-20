@@ -8,12 +8,10 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
 import fr.app.web.faces.interceptors.annotations.LogInterceptor;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * The abstract Class AbstractExceptionInterceptor.
  */
-@Slf4j
 @LogInterceptor @Interceptor
 public class LoggingInterceptor implements Serializable {
 

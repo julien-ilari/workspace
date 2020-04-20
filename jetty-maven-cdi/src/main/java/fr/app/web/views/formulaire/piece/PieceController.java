@@ -32,7 +32,6 @@ public class PieceController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	
 	private static final String message = "paramètre null.";
 	
 
@@ -82,7 +81,7 @@ public class PieceController implements Serializable {
 	}
 	
 	public void ajouterPiece(PieceType typePiece,  UploadedFile  uploadedFile ) throws IOException {
-		validerFichier();
+
 		
 		
 		PieceModel pieceModel = new PieceModel(uploadedFile);
@@ -102,20 +101,6 @@ public class PieceController implements Serializable {
 	}
 	
 	
-	
-	
-	private void validerFichier() {
-		// scan en ligne
-		
-		// Test extension valide
-		
-		// Test Taille max du fichier
-		
-//		FacesMessage msg = new FacesMessage("Pièce validée.",uploadedFile.getFileName());
-//        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
-        
-		
-	}
 
 	public Map<PieceType, Map<String,PieceModel>> getPieces() {
 		return pieces;

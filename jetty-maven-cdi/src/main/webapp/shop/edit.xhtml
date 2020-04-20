@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:html="http://www.app.fr/html"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/shop/layout-shop.xhtml">
+
+	<!-- Affichage du carousel ? -->
+<!-- 	<ui:param name="showCarousel" value="false" /> -->
+
+	<ui:define name="content">
+
+		<div class="row" >
+
+			<div id="product-custum"  class="col-3 card rounded" style="padding: 0">
+				<div class="card-header" style="padding: 0">
+					<canvas id="card-custum-canvas" role="personnailsation">
+					Navigateur non pris en charge par notre outil de personnalisation de produit.
+					</canvas>
+				</div>
+
+				<div class="card-body">
+					<h5 class="card-title">Actions</h5>
+					<button data-anijs="if: click, do: flip animated"
+					type="button" class="btn btn-primary btn-sm"
+						onmousedown="canvas.remove(canvas.getActiveObject());">Supprimer</button>
+					<button type="button" class="btn btn-primary btn-sm"
+						onmousedown="rotationElement();">Rotation</button>
+				</div>
+			</div>
+
+
+			<div class="col-9">
+				<nav>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link" id="nav-contact-tab"
+							data-toggle="tab" href="#nav-contact" role="tab"
+							aria-controls="nav-contact" aria-selected="false">Config
+							produit</a> 
+						
+						<a class="nav-item nav-link active" id="nav-home-tab"
+							data-toggle="tab" href="#nav-home" role="tab"
+							aria-controls="nav-home" aria-selected="true">Texte</a>
+							
+						<a
+							class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+							href="#nav-profile" role="tab" aria-controls="nav-profile"
+							aria-selected="false">Image</a>
+
+					</div>
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+					<div class="tab-pane fade show active p-1" id="nav-home"
+						role="tabpanel" aria-labelledby="nav-home-tab">
+
+						
+					</div>
+					<div class="tab-pane fade p-1" id="nav-profile" role="tabpanel"
+						aria-labelledby="nav-profile-tab">
+						
+						<img data-anijs="if: click, do: rubberBand animated"
+						src="/resources/img/custom/16180_80.png"
+							onmousedown="ajouterElement('16180_80', '/resources/img/custom/16180_80.png');"
+							style="cursor: pointer; width: 80px; height: 80px;"
+							id="my-image1" /> 
+							
+							<img data-anijs="if: click, do: rubberBand animated"
+							src="/resources/img/custom/16280_80.png"
+							onmousedown="ajouterElement('16280_80', '/resources/img/custom/16280_80.png');"
+							style="cursor: pointer; width: 80px; height: 80px;"
+							id="my-image2" /> 
+							
+							<img data-anijs="if: click, do: rubberBand animated"
+							src="/resources/img/custom/16380_80.png"
+							onmousedown="ajouterElement('16380_80', '/resources/img/custom/16380_80.png');"
+							style="cursor: pointer; width: 80px; height: 80px;"
+							id="my-image3" /> 
+							
+							<img data-anijs="if: click, do: rubberBand animated"
+							src="/resources/img/custom/16480_80.png"
+							onmousedown="ajouterElement('16480_80', '/resources/img/custom/16480_80.png');"
+							style="cursor: pointer; width: 80px; height: 80px;"
+							id="my-image4" />
+					
+					</div>
+					<div class="tab-pane fade p-1" id="nav-contact" role="tabpanel"
+						aria-labelledby="nav-contact-tab">
+
+						
+
+					</div>
+				</div>
+			</div>
+
+		
+
+		</div>
+
+		<div class="row ">
+			<div class="col-3" >
+			<h3>Liste des éléments ajoutés</h3>
+			<UL id="elements"></UL>
+			</div>
+		</div>
+
+
+
+
+
+	</ui:define>
+</ui:composition>

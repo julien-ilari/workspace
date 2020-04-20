@@ -7,7 +7,7 @@
 	
 	<tag>
 		<tag-name>inputText</tag-name>
-		<source>composants/input/inputText.xhtml</source>
+		<source>tags/input/inputText.xhtml</source>
 		<attribute>
 			<description>identifiant unique</description>
 			<name>id</name>
@@ -62,7 +62,7 @@
 	
 	<tag>
 		<tag-name>datePiker</tag-name>
-		<source>composants/input/datePiker.xhtml</source>
+		<source>tags/input/datePiker.xhtml</source>
 		<attribute>
 			<description>identifiant unique dans le form</description>
 			<name>id</name>
@@ -122,7 +122,7 @@
 	
 	<tag>
 		<tag-name>buttonAdd</tag-name>
-		<source>composants/button/insert/buttonAdd.xhtml</source>
+		<source>tags/button/insert/buttonAdd.xhtml</source>
 		<attribute>
 			<description>identifiant unique dans le form</description>
 			<name>id</name>
@@ -142,7 +142,7 @@
 	
 	<tag>
 		<tag-name>dataTable</tag-name>
-		<source>composants/data/dataTable.xhtml</source>
+		<source>tags/data/dataTable.xhtml</source>
 		<attribute>
 			<description>identifiant unique dans le form</description>
 			<name>id</name>

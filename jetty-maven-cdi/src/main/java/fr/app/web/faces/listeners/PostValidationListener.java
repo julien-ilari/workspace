@@ -23,23 +23,6 @@ public class PostValidationListener implements SystemEventListener {
 	public void processEvent(SystemEvent event) throws AbortProcessingException {
 
 		
-		if (event.getSource() instanceof UIInput) {
-			UIInput source = (UIInput) event.getSource();
-
-			//System.out.println(event.getSource());
-//			if (source.isValid()) {
-//				source.getAttributes().put("styleClass", "form-control is-valid");
-//				System.out.println("Champ valide.");
-//			} else if(! source.isValid()) {
-//				source.getAttributes().put("styleClass", "form-control is-invalid");
-//				System.out.println("Champ invalide.");
-//			}
-			
-		} else {
-			//System.out.println(event.getSource());
-		}
-		
-
 	}
 
 }

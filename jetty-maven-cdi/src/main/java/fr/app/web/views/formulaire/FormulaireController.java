@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
@@ -33,9 +32,11 @@ import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
 import fr.app.commons.base.exceptions.TechniqueException;
+import fr.app.web.faces.abstracts.GenericViewCRUD;
 import fr.app.web.faces.exceptions.MetierException;
 import fr.app.web.faces.interceptors.annotations.CatchException;
 import fr.app.web.faces.interceptors.annotations.LogInterceptor;
+import fr.app.web.views.ExempleModel;
 import fr.app.web.views.formulaire.piece.PieceController;
 import fr.app.web.views.formulaire.piece.PieceModel;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,7 @@ import lombok.extern.slf4j.Slf4j;
 @CatchException
 @ViewScoped
 @Named("formulaireController")
-public class FormulaireController implements Serializable {
+public class FormulaireController extends GenericViewCRUD<ExempleModel>  {
 
 	/**
 	 * serialVersionUID
@@ -110,7 +111,7 @@ public class FormulaireController implements Serializable {
 		
 		pieceService.reset();
 		
-		log.debug("Message test");
+		
 		
 		pieceService.testNotNUll(null);
 		

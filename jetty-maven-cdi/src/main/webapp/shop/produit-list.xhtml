@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:html="http://www.app.fr/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/shop/layout-shop.xhtml">
+	
+	<ui:define name="content">
+
+		<div>
+			<div class="jumbotron">
+				<header>
+					<h1 class="font-italic">Titre catégorie</h1>
+				</header>
+				<p class="lead my-3">
+					Description de la catégorie
+				</p>
+			</div>
+		
+			<div class="container"> 
+			<DIV class="row">
+			<c:forEach var="i" begin="1" end="9">
+				<ui:include src="/WEB-INF/shop/elements/produit-horizontale.xhtml"
+					var="#{i}" />
+			</c:forEach>
+			</DIV>
+			</div>
+			
+			
+
+		</div>
+
+	</ui:define>
+	
+	
+	
+	
+</ui:composition>

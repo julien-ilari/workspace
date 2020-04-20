@@ -24,7 +24,7 @@ import lombok.Getter;
 @ViewScoped
 @Named
 //@Log 
-public class ExempleViewAdmin extends GenericViewCRUD<ExempleModel> {
+public class ExempleViewAdmin extends GenericViewCRUD<ExempleModel>  {
 
 	/**
 	 * serialVersionUID
@@ -39,7 +39,7 @@ public class ExempleViewAdmin extends GenericViewCRUD<ExempleModel> {
 	private Formulaire formulaire;
 	
 	@Getter
-	private List<String> list = new ArrayList<String>() {{ add("string 1"); add("string 2"); }};
+	private List<String> listString = new ArrayList<String>() {{ add("string 1"); add("string 2"); }};
 
 	public void createHtmlInputText(ActionEvent event) throws JAXBException {
 		
@@ -60,13 +60,17 @@ public class ExempleViewAdmin extends GenericViewCRUD<ExempleModel> {
 	}
 
 	@PostConstruct
-	public void init() throws JAXBException {
-		JAXBContext jc = JAXBContext.newInstance(Formulaire.class);
-		Unmarshaller unmarshaller = jc.createUnmarshaller();
-
-		
-		formulaire = (Formulaire) unmarshaller.unmarshal(new File("C:/Users/33671/Desktop/travail julien/repository/workspace/jetty-maven-cdi/src/main/resources/page.xml"));
-		
+	public void initView() {
+		JAXBContext jc;
+		try {
+			jc = JAXBContext.newInstance(Formulaire.class);
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			formulaire = (Formulaire) unmarshaller.unmarshal(new File("C:/Users/33671/Desktop/travail julien/repository/workspace/jetty-maven-cdi/src/main/resources/page.xml"));
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 
 	@Override

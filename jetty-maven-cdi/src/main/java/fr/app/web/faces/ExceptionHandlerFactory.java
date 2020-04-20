@@ -14,6 +14,9 @@ public class ExceptionHandlerFactory extends FacesMessageExceptionHandlerFactory
 
 	// Actions --------------------------------------------------------------------------------------------------------
 	
+	/**
+	 * Gestion de l'exception réceptionnée.
+	 */
 	@Override
 	public ExceptionHandler getExceptionHandler() {
 		return new ExceptionHandlerWrapper(getWrapped().getExceptionHandler());

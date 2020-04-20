@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head lang="fr">
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="description site web" />
+	<meta name="author" content="Julien et Abdel" />
+
+
+	<title>Titre Application</title>
+
+
+
+
+	<link href="/resources/vendor/fontawesome/css/all.min.css"	rel="stylesheet" type="text/css" />
+
+	<!-- style du template sb-amin-->
+	<h:outputStylesheet library="css" name="sb-admin-2.min.css" />
+	<h:outputStylesheet library="css" name="ckeditor.css" />
+	<h:outputStylesheet library="vendor" name="datatables/dataTables.bootstrap4.min.css" />
+</h:head>
+
+<h:body lang="fr">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ui:include src="/WEB-INF/elements/sidebar.xhtml" />
+		
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="container-fluid">
+				<!-- Topbar -->
+				<ui:include src="/WEB-INF/elements/topbar.xhtml" />
+				
+				<!-- Begin Page Content -->
+				<div class="content m-3">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+					</div>
+
+					<ui:insert  name="content">
+					</ui:insert>
+				</div>
+				<!-- end content -->
+
+			</div>
+			<!-- End container-fluid -->
+
+			<!-- Footer -->
+			<ui:include src="/WEB-INF/elements/footer.xhtml" />
+
+		</div>
+		<!-- End Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+
+
+	<script src="/resources/vendor/jquery/jquery.min.js" />
+  	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  	<script src="/resources/js/sb-admin-2.min.js" />
+
+  	<!-- Core plugin JavaScript-->
+	<!--   <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script> -->
+		
+		<script src="/resources/vendor/datatables/jquery.dataTables.min.js" />
+		<script src="/resources/vendor/datatables/dataTables.bootstrap4.min.js" />
+<!-- 		<script src="/resources/js/demo/datatables-demo.js" /> -->
+	
+
+
+
+
+</h:body>
+</html>

@@ -9,7 +9,7 @@ import fr.app.web.faces.validators.UpperCase;
 
 
 
-public class ExempleModel extends AbstractModel<String> {
+public class ExempleModel extends AbstractModel<String>  {
 
 	/**
 	 * serialVersionUID

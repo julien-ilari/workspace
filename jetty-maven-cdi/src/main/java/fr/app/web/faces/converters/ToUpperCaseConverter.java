@@ -8,7 +8,8 @@ import javax.inject.Named;
 
 @ApplicationScoped
 @Named("converter.upperCase")
-public class ToUpperCaseConverter implements Converter {
+public class ToUpperCaseConverter implements Converter<Object> {
+
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {

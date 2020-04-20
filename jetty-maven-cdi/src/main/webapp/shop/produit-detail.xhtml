@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:html="http://www.app.fr/html"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/shop/layout-shop.xhtml">
+	<ui:define name="content">
+
+	
+	<div class="col-md-12" >
+		<div class="card mb-4 ">
+			<div class="row m-0">
+
+				<div class="col-md-6 ">
+						<img class="figure-img img-fluid rounded h-100 w-100" 
+							alt="Body bébé papy" 
+							aria-labelledby="produit-label"
+							aria-describedby="produit-description"
+							src="/resources/img/body-bebe-papa-qui-dechire.jpg" />
+						
+				</div>
+				<div class="col-md-6">
+					<div class="card-body">
+						
+						
+						<h1 class="card-title" data-anijs="if: mouseover, do: pulse animated">
+						<a href="#" title="Voir le produit">
+						<span id="produit-label">Body bébé papy</span>
+						</a></h1>
+						
+						
+						<small aria-label="Ancien prix" 
+						class="fa fa-tag p-2 badge badge-pill badge-danger"> <del>9,90 €</del></small>
+						<small aria-label="Nouveau prix" 
+						class="fa fa-tag p-2 badge badge-pill badge-success"> 5,90 €</small>
+						
+						
+						<div class="card-text mt-2">
+							<p id="produit-description">This is a wider card with supporting text below as a
+								natural lead-in to additional content. This content is a little
+								bit longer.</p>
+						</div>
+						
+					
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+					  <li class="nav-item">
+					    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Couleur</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Taille</a>
+					  </li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active p-1" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<ul class="list-inline" role="listbox" aria-labelledby="listbox-label-product001">
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #157567"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #456987"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #456987"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #156717"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #278987"  role="option"></li>
+					    </ul>
+						</div>
+					  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+					</div>
+
+
+					
+					  <div class="d-flex justify-content-between align-items-center mt-2" >
+                    <div class="btn-group" role="group">
+                      <button title="Voir les produits de la catégorie" type="button" 
+                      aria-label="lien vers les produits de la même catégorie"
+                      class="font-weight-bold fa fa-cart-plus btn btn-primary btn-lg ">Ajouter au panier</button>
+                     
+                     </div>
+                  
+                  </div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+</div>
+	
+	
+	</ui:define>
+</ui:composition>

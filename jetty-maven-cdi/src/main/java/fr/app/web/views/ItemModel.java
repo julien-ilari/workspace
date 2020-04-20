@@ -3,7 +3,6 @@ package fr.app.web.views;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
 
 import fr.app.web.faces.interceptors.annotations.ElementTrace;
 import fr.app.web.faces.validators.UpperCase;

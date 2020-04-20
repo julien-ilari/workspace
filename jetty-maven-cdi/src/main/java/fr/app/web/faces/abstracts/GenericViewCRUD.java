@@ -1,6 +1,7 @@
 package fr.app.web.faces.abstracts;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import fr.app.web.faces.utils.JSFUtil;
 
 
 
-public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends AbstractBean {
+public abstract class GenericViewCRUD<M extends AbstractModel<?>>  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -177,7 +178,7 @@ public abstract class GenericViewCRUD<M extends AbstractModel<?>> extends Abstra
 			return;
 		
 		//loadBean();
-		PrimeFaces.current().executeScript("insertSuccess()");
+		//PrimeFaces.current().executeScript("insertSuccess()");
 	}
 
 	

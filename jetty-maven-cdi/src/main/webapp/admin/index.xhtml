@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:html="http://www.app.fr/html"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/admin/layout-admin.xhtml">
+	<ui:define name="titre">Test</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{exempleViewAdmin.loadBean}" />
+	</f:metadata>
+
+	<!-- paramètres-->
+	<ui:param name="controller" value="#{exempleViewAdmin}" />
+	<ui:param name="model" value="#{controller.model}" />
+
+	<ui:define name="content">
+		<h:form id="formulaire" prependId="false" binding="#{controller.form}">
+		
+			
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

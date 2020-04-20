@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
-import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlOutputLabel;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
@@ -94,7 +93,7 @@ public class ProcessValidationListener implements PhaseListener {
 
 			if (child instanceof UIInput) {
 				UIInput uIInput = (UIInput) child;
-				HtmlOutputLabel htmlOutputLabel = inputLabel.get( (UIInput) child);
+				//HtmlOutputLabel htmlOutputLabel = inputLabel.get( (UIInput) child);
 				
 				String styleClassInput  = classCompoent.get(child);
 				//String styleClassLabel  = (String) htmlOutputLabel.getAttributes().get("styleClass");

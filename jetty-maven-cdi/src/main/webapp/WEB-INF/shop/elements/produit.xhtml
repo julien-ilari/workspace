@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<ui:component name="produit">          
+            <div class="col-md-4" >
+            	<div class="card mb-4 box-shadow rounded">
+               	 <div class="card-header" >
+					<figure id="product001-figure" class="figure">
+                	  <img alt="Body bébé papy"
+                	  	class="figure-img img-fluid rounded img-fluid"
+                		src="/resources/img/body-bebe-papa-qui-dechire.jpg"  />
+					  <figcaption  class="figure-caption text-right pr-2 pl-2">
+					 	<a id="product001-label" data-anijs="if: mouseover, do: pulse animated"
+					 	href="#" class="fa fa-hand-o-up " title="Voir le produit">Body bébé papy</a>
+					  </figcaption>
+					  
+					</figure>
+              	</div>
+              
+			
+				
+                <div class="card-body" >
+                 <p:commandButton icon="fa fa-cog" value="Personnaliser"
+				class=" btn btn-primary btn-sm " ></p:commandButton>
+           
+                 <details class="card-text mt-1" open="open">
+					    <summary  class="font-weight-bold">Description</summary>
+					    <p id="product001-description">Something small enough to escape casual notice.</p>
+				</details>
+				
+				  <details class="card-text mt-2" open="open">
+					    <summary id="listbox-label-product001" class="font-weight-bold">Colorie(s)</summary>
+					    
+					    <ul class="list-inline" role="listbox" aria-labelledby="listbox-label-product001">
+						    <li data-anijs="if: mouseover, do: pulse animated" class="list-inline-item p-1" style="width: 24px;height: 24px;background-color: #157567"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="list-inline-item p-1" style="width: 24px;height: 24px;background-color: #456987"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="list-inline-item p-1" style="width: 24px;height: 24px;background-color: #456987"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="list-inline-item p-1" style="width: 24px;height: 24px;background-color: #156717"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="list-inline-item p-1" style="width: 24px;height: 24px;background-color: #278987"  role="option"></li>
+					    </ul>
+					</details>
+                 
+                  <div class="d-flex justify-content-between align-items-center mt-2" >
+                    <div class="btn-group" role="group" aria-label="liens">
+                      <button title="Voir les produits de la catégorie" type="button" class="font-weight-bold fa fa-list btn btn-sm btn-outline-secondary"> Voir catégorie</button>
+                      <button title="Voir le produit" type="button" class="font-weight-bold fa fa-hand-o-up btn btn-sm btn-outline-secondary">Voir produit</button>
+                    
+                     </div>
+                    <small  
+                     class="fa fa-tag p-2 badge badge-pill badge-warning" aria-label="prix" > 9,90 €</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+ <div class="col-md-12" >
+		<div class="card mb-4 ">
+			<div class="row m-0">
+
+				<div class="col-md-4 ">
+						<img class="figure-img img-fluid rounded h-100 w-100" 
+							alt="Body bébé papy" 
+							aria-labelledby="produit-label"
+							aria-describedby="produit-description"
+							src="/resources/img/body-bebe-papa-qui-dechire.jpg" />
+						
+				</div>
+				<div class="col-md-8">
+					<div class="card-body" 
+						 >
+						
+						<h2 class="card-title" data-anijs="if: mouseover, do: pulse animated">
+						<a href="#" title="Voir le produit">
+						<span id="produit-label">Body bébé papy</span>
+						</a></h2>
+						<small class="fa fa-tag p-2 badge badge-pill badge-warning" 
+						aria-label="prix" > 9,90 €</small>
+						<div class="card-text mt-2">
+							<p id="produit-description">This is a wider card with supporting text below as a
+								natural lead-in to additional content. This content is a little
+								bit longer.</p>
+
+							
+						</div>
+					<details class="card-text mt-2" open="open">
+					    <summary id="listbox-label-product001" class="font-weight-bold">Colorie(s)</summary>   
+					    <ul class="list-inline" role="listbox"
+					     aria-labelledby="listbox-label-product001">
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #157567"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #456987"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #456987"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #156717"  role="option"></li>
+						    <li data-anijs="if: mouseover, do: pulse animated" class="rounded-circle list-inline-item p-1" style="width: 24px;height: 24px;background-color: #278987"  role="option"></li>
+					    </ul>
+					</details>
+					  <div class="d-flex justify-content-between align-items-center mt-2" >
+                    <div class="btn-group" role="group">
+                      <button title="Voir les produits de la catégorie" type="button" 
+                      aria-label="lien vers les produits de la même catégorie"
+                      class="font-weight-bold fa fa-list btn btn-sm btn-outline-secondary"> Voir catégorie</button>
+                      <button title="Voir le produit" type="button" 
+                      aria-label="lien vers la fiche produit"
+                      class="font-weight-bold fa fa-hand-o-up btn btn-sm btn-outline-secondary">Voir produit</button>
+                    
+                     </div>
+                  
+                  </div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+</div>
+
+
+	</ui:component>
+
+</ui:composition>

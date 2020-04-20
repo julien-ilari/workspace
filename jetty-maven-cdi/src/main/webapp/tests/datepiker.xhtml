@@ -17,7 +17,7 @@
 	<meta name="author" content="TMA GFI" />
 	<title>Ref Doc</title>
 
-
+<h:outputStylesheet library="primefaces-mytheme" name="theme.css" />
 
 	<!-- 	<h:outputScript library="js" name="jquery.min.js" /> -->
 	<h:outputScript library="js" name="moment/moment.min.js" />
@@ -39,32 +39,36 @@
 
 <h:body style="padding:0.5em">
 
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{formulaireController.loadBean}" />
+		<f:event type="preRenderView" listener="#{exempleViewAdmin.loadBean}" />
+	</f:metadata>
+	
 	<!-- paramètres-->
 	<ui:param name="controller" value="#{formulaireController}" />
 	<ui:param name="model" value="#{controller.model}" />
-	<f:metadata>
-		<f:event type="preRenderView" listener="#{controller.loadBean}" />
-	</f:metadata>
 
-	<p:messages showDetail="true" showSummary="false" globalOnly="true">
+	<p:messages id="messages" showDetail="true" showSummary="false" globalOnly="false">
 		<p:autoUpdate />
 	</p:messages>
 
 
 	<div class="container-fluid">
 
-
+		
+		<div class="row ">
+				<h:outputLink id="openDialogLink"
+				
+				value="javascript:void(0)">Formulaire</h:outputLink>
+		</div>
 		<h:form id="form-edit" prependId="false" enctype="multipart/form-data">
-			<p:autoUpdate></p:autoUpdate>
-
+			<p:autoUpdate />
 			<div class="row ">
 				<html:buttonAdd id="btn-add" />
 			</div>
 
-			<div class="row ">
-				<h:outputLink id="openDialogLink" value="javascript:void(0)"
-					onclick="PF('dlg').show();">Formulaire</h:outputLink>
-			</div>
+			
 
 			<h:outputScript library="js" name="specific.js" />
 
@@ -72,20 +76,30 @@
 				footer="(*) Pièce jointe obligatoire" style="margin-bottom:20px">
 
 				<ui:param name="rowId" value="#{0}" />
-				<c:forEach var="item" items="#{exempleViewAdmin.list}">
+				<c:forEach var="item" items="#{exempleViewAdmin.listString}">
+				
+					
 					<p:outputPanel
-						styleClass="input-group mb-1 border border-secondary p-1">
+						styleClass="mb-1 border border-secondary p-1">
+						<div class="ui-g-12">
+						<label class="" for="piece#{rowId}">Fichier #{rowId}</label>
 						<p:fileUpload id="piece#{rowId}" immediate="true" process="@this"
 							fileUploadListener="#{formulaireController.handleFileUpload}"
-							style="border: none;" mode="advanced" auto="true"
+						label="Parcourir" 
+						cancelIcon="pi pi-folder-open"
+							chooseIcon="fa fa-folder"
+							style="font-family:FontAwesome;border: none;" mode="advanced" auto="false"
 							messageTemplate="{name} {size}" dragDropSupport="false"
 							multiple="false">
 
 							<f:attribute name="rowId" value="#{rowId}" />
+							
 						</p:fileUpload>
-						<h:message for="piece#{rowId}" style="color:red" />
+						</div>
+						<p:message for="@previous"  />
 
 					</p:outputPanel>
+					
 
 					<ui:param name="rowId" value="#{rowId + 1}" />
 				</c:forEach>
@@ -101,42 +115,43 @@
 
 
 
-		<h:form id="form-saisie" styleClass="w-100" prependId="false"
-			enctype="multipart/form-data">
-			<p:dialog id="picture" widgetVar="dlg" styleClass="w-50 ui-g-nopad"
-				closable="true" showHeader="false" modal="false"
-				header="Formulaire de saisie" resizable="false" showEffect="clip"
-				hideEffect="clip">
+		
+			<p:overlayPanel id="picture" for="openDialogLink"
+			my="right bottom" at="left bottom" 
+				
+               onShow="resize();"
+				widgetVar="dlg" 
+				closable="true" showHeader="true" 
+				 showCloseIcon="true"
+				header="Formulaire de saisie" >
+				
+				<h:form id="form-saisie"  prependId="false" >
+				<p:autoUpdate />
+				<p:panel id="basic2" header="Panel" toggleable="true">
+					
+					
+					<html:inputText label="Nom" value="#{controller.model.zoneTexte}" />
+					<html:inputText label="Prénom"
+						value="#{controller.model.zoneTexte}" />
+					<html:datePiker label="Date naissance"
+						value="#{controller.model.zoneTexte}" />
+					<html:selectOneItem label="sdfdsf" value="sdffd" />
+					<div class=" text-center">
+						<html:buttonValidateAdd id="btn-validate" />
+					</div>
 
+				</p:panel>
 
-				<div style="text-align: right; padding-right: 0.5em">
-					<h:outputLink id="openDialogLink2" value="javascript:void(0)"
-						styleClass="btn btn-sm btn-secondary" onclick="PF('dlg').hide();">
-						<i class="fa fa-remove" />
-					</h:outputLink>
-				</div>
-				<p:autoUpdate></p:autoUpdate>
-
-
-
-				<div class="bg-info p-4 ">
-					<p:fieldset legend="Utilisateur">
-
-						<html:inputText label="Nom" value="#{controller.model.zoneTexte}" />
-						<html:inputText label="Prénom"
-							value="#{controller.model.zoneTexte}" />
-						<html:datePiker label="Date naissance"
-							value="#{controller.model.zoneTexte}" />
-						<html:selectOneItem label="sdfdsf" value="sdffd" />
-						<div class=" text-center">
-							<html:buttonValidateAdd id="btn-validate" />
-						</div>
-
-					</p:fieldset>
-				</div>
-
-			</p:dialog>
-		</h:form>
+			</h:form>
+			</p:overlayPanel>
+			<script type="text/javascript"> 
+		     function resize() { 
+		    	 $("[id='picture']").css("width", "50%"); 
+			     $("[id='picture']").css("top", "25%"); 
+			     $("[id='picture']").css("left", "25%");
+		     } 
+		    </script> 
+			
 
 	</div>
 
